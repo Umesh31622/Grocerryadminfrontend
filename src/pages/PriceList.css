@@ -1,0 +1,408 @@
+/* ========== GLOBAL CONTAINER ========== */
+.price-container {
+  max-width: 1250px;
+  margin: auto;
+  padding: 25px;
+  
+  font-family: "Inter", sans-serif;
+  color: #1d3557;
+}
+
+/* ========== HEADER ========== */
+.header-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.header-section h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #13385a;
+  margin-bottom: 5px;
+}
+
+.header-section p {
+  color: #6c757d;
+  font-size: 15px;
+}
+
+/* ========== FORM CARD ========== */
+.price-form-card {
+  
+  border-radius: 14px;
+  
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+.price-form-card h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #13385a;
+  margin-bottom: 15px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #2b2d42;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 10px;
+
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+textarea {
+  resize: none;
+  min-height: 70px;
+}
+
+.full-width {
+  grid-column: 1 / -1;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ========== BUTTONS ========== */
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 9px 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+}
+
+.btn.primary {
+  background: #007bff;
+  color: #fff;
+}
+
+.btn.primary:hover {
+  background: #0062cc;
+}
+
+.btn.small {
+  background: #4caf50;
+  color: white;
+  padding: 8px 12px;
+  font-size: 13px;
+}
+
+.btn.edit {
+  background: #ffb703;
+  color: #000;
+}
+
+.btn.delete {
+  background: #e63946;
+  color: #fff;
+}
+
+.btn.cancel {
+  background: #adb5bd;
+  color: #fff;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.form-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ========== CSV CONTROLS ========== */
+.csv-controls {
+
+  border-radius: 12px;
+
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.csv-controls input[type="file"] {
+  border: 1px solid #cfd6e0;
+  border-radius: 6px;
+  padding: 6px;
+}
+
+/* ========== TABLE CARD ========== */
+.table-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.table-header h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #13385a;
+}
+
+.table-header span {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background: #f1f3f5;
+  color: #2b2d42;
+  font-weight: 600;
+  padding: 10px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+img {
+  width: 45px;
+  height: 45px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+}
+
+.no-img {
+  color: #888;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.loader,
+.empty {
+  text-align: center;
+  padding: 20px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* ========== MOBILE RESPONSIVENESS ========== */
+@media (max-width: 900px) {
+  .csv-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 768px) {
+  .price-container {
+    padding: 15px;
+  }
+
+  .header-section h1 {
+    font-size: 22px;
+  }
+
+  .price-form-card {
+    padding: 18px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Table to Card View */
+  table {
+    display: none;
+  }
+
+  .table-card {
+    padding: 10px;
+  }
+
+  .mobile-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 12px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .mobile-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 6px 0;
+  }
+
+  .mobile-card p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .mobile-card .actions {
+    justify-content: flex-start;
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    font-size: 13px;
+    padding: 7px 10px;
+  }
+
+  .header-section h1 {
+    font-size: 20px;
+  }
+
+  .csv-controls,
+  .price-form-card,
+  .table-card {
+    border-radius: 8px;
+  }
+}
+@media (max-width: 768px) {
+  table {
+    display: none;
+  }
+
+  .mobile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .mobile-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .mobile-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .mobile-card h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #13385a;
+  }
+
+  .mobile-card p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #444;
+  }
+
+  .mobile-card .actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .mobile-card .btn {
+    flex: 1;
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+}
+.bulk-bar {
+  background: #eaf3ff;
+  border: 1px solid #bcd2f7;
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bulk-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.bulk-actions input {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  width: 150px;
+}
