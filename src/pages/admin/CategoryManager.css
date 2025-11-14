@@ -1,4 +1,4 @@
-.category-container {
+/* .category-container {
   max-width: 900px;
   margin: 40px auto;
   padding: 25px;
@@ -111,7 +111,7 @@
   font-size: 13px;
 }
 
-/* Mobile Cards */
+
 .category-cards {
   display: none;
 }
@@ -161,5 +161,241 @@
 
   .card-body strong {
     color: #13385a;
+  }
+} */
+
+
+.category-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.header h2 {
+  color: #13385a;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.header p {
+  color: #6c757d;
+  font-size: 14px;
+}
+
+/* FORM */
+.category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 25px;
+}
+
+.category-form .form-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.category-form input[type="text"],
+.category-form input[type="file"] {
+  padding: 10px 15px;
+  flex: 1;
+  min-width: 240px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.3s;
+  background: #fafbfc;
+}
+
+.category-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* SUBMIT BUTTON */
+.category-form button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.category-form button:hover {
+  background: #0056b3;
+}
+
+/* CANCEL BUTTON */
+.cancel-btn {
+  background: #6c757d !important;
+  margin-top: 6px;
+}
+
+.cancel-btn:hover {
+  background: #565e64 !important;
+}
+
+/* IMAGE PREVIEW */
+.preview-box {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.preview-box img {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+}
+
+/* TABLE LIST */
+.category-list table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.category-list th,
+.category-list td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+}
+
+.category-list th {
+  background-color: #f4f6f8;
+  font-weight: 600;
+  color: #13385a;
+}
+
+.category-list tr:hover {
+  background-color: #f9fafc;
+}
+
+.table-img {
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #dee2e6;
+}
+
+/* ACTION BUTTONS */
+.delete-btn {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.delete-btn:hover {
+  background: #b02a37;
+}
+
+.delete-btn.small {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+.edit-btn {
+  background: #ffc107;
+  color: #000;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 6px;
+  transition: 0.3s;
+  font-weight: 500;
+}
+
+.edit-btn:hover {
+  background: #e0a800;
+}
+
+/* MOBILE CARDS */
+.category-cards {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .category-list table {
+    display: none;
+  }
+
+  .category-cards {
+    display: grid;
+    gap: 12px;
+  }
+
+  .category-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 14px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .index-badge {
+    background: #13385a;
+    color: #fff;
+    border-radius: 50%;
+    font-size: 13px;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .mobile-img {
+    width: 100%;
+    height: 160px;
+    border-radius: 12px;
+    object-fit: cover;
+    margin-bottom: 10px;
+  }
+
+  .card-body p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: #333;
+  }
+
+  .card-body strong {
+    color: #13385a;
+  }
+
+  .edit-btn.mobile {
+    margin-top: 10px;
+    width: 100%;
   }
 }
