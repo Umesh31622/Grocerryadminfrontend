@@ -166,7 +166,7 @@ export default function AdminLayout() {
           </li>
           <li style={styles.navItem}>
             <Link to="/admin/pricelist" style={styles.link}>
-              <DollarSign size={18} style={styles.icon} /> Price List
+              <DollarSign size={18} style={styles.icon} />  Sub Category
             </Link>
           </li>
         </ul>
@@ -284,3 +284,4 @@ const styles = {
     minWidth: 20,
   },
 };
+
