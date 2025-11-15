@@ -1,289 +1,369 @@
-
 /* ---------------------------------------------------
-   🌟 Global Container
+   CONTAINER
 --------------------------------------------------- */
 .category-container {
   max-width: 1100px;
   margin: 40px auto;
   padding: 30px;
   background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.07);
   font-family: "Inter", sans-serif;
 }
 
 /* ---------------------------------------------------
-   🌟 Header
+   HEADER
 --------------------------------------------------- */
 .header {
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .header h2 {
-  color: #13385a;
+  font-size: 26px;
   font-weight: 700;
-  font-size: 28px;
+  color: #13385a;
 }
 
 .header p {
   color: #6c757d;
-  font-size: 15px;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 /* ---------------------------------------------------
-   🌟 Category Form
+   CATEGORY FORM
 --------------------------------------------------- */
 .category-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .category-form .form-row {
   display: flex;
-  gap: 12px;
   flex-wrap: wrap;
+  gap: 14px;
 }
 
 .category-form input[type="text"],
-.category-form input[type="file"],
-.sub-form input[type="text"],
-.sub-form input[type="file"] {
-  padding: 12px 15px;
+.category-form input[type="file"] {
   flex: 1;
-  min-width: 240px;
-  border: 1px solid #cfd8e2;
+  min-width: 220px;
+  padding: 12px 14px;
+  border: 1px solid #d7dfe9;
   border-radius: 10px;
-  background: #f7f9fc;
-  transition: 0.25s;
+  background: #f8fafc;
+  transition: 0.3s;
 }
 
-.category-form input:focus,
-.sub-form input:focus {
+.category-form input:focus {
   border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0,123,255,0.25);
+  box-shadow: 0 0 6px rgba(0,123,255,0.3);
 }
 
-/* ---------------------------------------------------
-   🌟 Global Buttons
---------------------------------------------------- */
-button,
-.small-btn {
-  border: none;
-  padding: 9px 16px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.25s;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-button:hover,
-.small-btn:hover {
-  transform: translateY(-2px);
-}
-
-.category-form button,
-.sub-form button {
+.category-form button {
   background: #007bff;
-  color: #fff;
-}
-
-.category-form button:hover,
-.sub-form button:hover {
-  background: #005fc5;
+  color: white;
+  border: none;
+  padding: 11px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .cancel-btn {
-  background: #6c757d !important;
+  background: #adb5bd !important;
 }
 
 .cancel-btn:hover {
-  background: #535a60 !important;
+  background: #889098 !important;
+}
+
+/* ---------------------------------------------------
+   GLOBAL BUTTONS
+--------------------------------------------------- */
+button {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: translateY(-2px);
 }
 
 .edit-btn {
   background: #ffc107;
   color: black;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
 }
 
-.edit-btn:hover {
-  background: #e0a000;
+.edit-btn.small {
+  padding: 5px 8px;
+  font-size: 13px;
 }
 
 .delete-btn {
   background: #dc3545;
   color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
 }
 
-.delete-btn:hover {
-  background: #b02a37;
+.delete-btn.small {
+  padding: 5px 8px;
+  font-size: 13px;
 }
 
 .small-btn {
   background: #13385a;
   color: white;
-}
-
-.small-btn:hover {
-  background: #0b263f;
-}
-
-/* ---------------------------------------------------
-   ❌ REMOVE ALL PREVIEW IMAGES (always hidden)
---------------------------------------------------- */
-.preview-box {
-  display: none !important;
-  height: 0 !important;
-  width: 0 !important;
-  overflow: hidden !important;
+  padding: 7px 12px;
+  border-radius: 8px;
 }
 
 /* ---------------------------------------------------
-   🌟 Category Table
+   DESKTOP TABLE
 --------------------------------------------------- */
 .category-list table {
   width: 100%;
   border-collapse: collapse;
-  border-radius: 16px;
-  overflow: hidden;
   background: #ffffff;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
 }
 
 .category-list th,
 .category-list td {
-  padding: 15px 16px;
+  padding: 14px 12px;
+  border-bottom: 1px solid #e8edf3;
   text-align: center;
-  border-bottom: 1px solid #eef2f5;
 }
 
 .category-list th {
-  background: #eef4fa;
-  color: #13385a;
-  font-size: 15px;
+  background: #f0f5ff;
   font-weight: 600;
-}
-
-.category-list tr:hover {
-  background: #f8fbff;
+  color: #13385a;
 }
 
 .table-img {
-  width: 70px;
-  height: 70px;
-  border-radius: 12px;
+  width: 65px;
+  height: 65px;
+  border-radius: 10px;
   object-fit: cover;
-  border: 2px solid #e3e6ea;
+  border: 1px solid #d0d7e3;
 }
 
 /* ---------------------------------------------------
-   🌟 Subcategory Section
+   SUBCATEGORY SECTION (DESKTOP)
 --------------------------------------------------- */
 .sub-section {
-  margin-top: 20px;
-  padding: 16px;
+  margin-top: 10px;
+  padding: 15px;
   background: #f8fbff;
-  border: 1px solid #dce7f7;
-  border-radius: 14px;
+  border: 1px solid #d7e4f7;
+  border-radius: 12px;
 }
 
 .sub-section h4 {
+  margin-bottom: 12px;
   color: #13385a;
-  font-size: 18px;
-  margin-bottom: 16px;
+  font-size: 17px;
 }
 
-/* Sub Grid */
 .sub-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
 }
 
 .sub-item {
   background: #ffffff;
-  padding: 14px;
-  border-radius: 14px;
+  padding: 10px;
+  border-radius: 12px;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  border: 1px solid #e5e9f0;
-  transition: 0.25s;
-}
-
-.sub-item:hover {
-  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  align-items: center;
+  border: 1px solid #e1e6ef;
 }
 
 .sub-thumb {
-  width: 65px;
-  height: 65px;
-  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
   object-fit: cover;
-  border: 1px solid #cfd6df;
+  border: 1px solid #cfd8e3;
 }
 
 /* ---------------------------------------------------
-   🌟 Sub Form
+   SUB FORM (DESKTOP + MOBILE)
 --------------------------------------------------- */
 .sub-form {
-  margin-top: 20px;
-  padding: 16px;
+  margin-top: 15px;
+  padding: 14px;
   background: #eef4ff;
-  border-radius: 14px;
-  border: 1px solid #c7d6f7;
+  border-radius: 10px;
+  border: 1px solid #d3ddf6;
+}
+
+.sub-form input[type="text"],
+.sub-form input[type="file"] {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccd6e3;
+  border-radius: 8px;
+  background: #f8fafc;
 }
 
 /* ---------------------------------------------------
-   🌟 Pagination
+   PAGINATION
 --------------------------------------------------- */
 .pagination {
-  margin-top: 30px;
   display: flex;
   justify-content: center;
   gap: 10px;
+  margin-top: 22px;
 }
 
 .pagination button {
   background: #13385a;
   color: white;
-  padding: 8px 14px;
+  padding: 7px 12px;
+  border-radius: 8px;
 }
 
-.pagination .active-page {
-  background: #ffc107;
-  color: black;
+.active-page {
+  background: #ffc107 !important;
+  color: #000 !important;
 }
 
 /* ---------------------------------------------------
-   🌟 Mobile
+   MOBILE CARDS (THE REAL MAGIC)
 --------------------------------------------------- */
+.category-cards {
+  display: none;
+}
+
 @media (max-width: 768px) {
+
+  /* hide desktop table */
   .category-list table {
-    display: none;
+    display: none !important;
   }
 
+  /* show card layout */
   .category-cards {
     display: grid;
     gap: 15px;
   }
 
   .category-card {
-    background: #fff;
+    background: white;
     padding: 16px;
-    border-radius: 15px;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  }
+
+  .card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .index-badge {
+    width: 30px;
+    height: 30px;
+    background: #13385a;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 13px;
+    font-weight: 600;
   }
 
   .mobile-img {
     width: 100%;
-    height: 180px;
-    border-radius: 14px;
+    height: 160px;
+    border-radius: 12px;
     object-fit: cover;
-    margin-bottom: 12px;
+    margin: 12px 0;
+  }
+
+  .card-body p {
+    margin: 4px 0;
+    font-size: 15px;
+  }
+
+  /* MOBILE SUB BOX */
+  .sub-mobile-box {
+    background: #f1f6ff;
+    border: 1px solid #d7e4fc;
+    padding: 12px;
+    border-radius: 12px;
+    margin-top: 10px;
+  }
+
+  .sub-mobile-title {
+    font-size: 15px;
+    color: #13385a;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .sub-mobile-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .sub-mobile-item:last-child {
+    border-bottom: none;
+  }
+
+  .sub-mobile-item img {
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 1px solid #ddd;
+  }
+
+  .submobile-actions {
+    margin-left: auto;
+    display: flex;
+    gap: 6px;
+  }
+
+  .submobile-actions button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  /* INPUTS FULL WIDTH ON MOBILE */
+  .category-form .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .category-form input {
+    width: 100% !important;
+  }
+
+  .category-form button {
+    width: 100%;
+  }
+
+  .sub-form input {
+    width: 100%;
+  }
+
+  .sub-form button {
+    width: 100%;
   }
 }
