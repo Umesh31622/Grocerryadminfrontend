@@ -1,8 +1,97 @@
-// import React from "react";
+// // import React from "react";
+// // import { Link, Outlet, useNavigate } from "react-router-dom";
+
+// // export default function AdminLayout() {
+// //   const navigate = useNavigate();
+
+// //   const logout = () => {
+// //     localStorage.clear();
+// //     navigate("/login", { replace: true });
+// //   };
+
+// //   return (
+// //     <div style={{ display: "flex", minHeight: "100vh" }}>
+// //       {/* Sidebar */}
+// //       <aside
+// //         style={{
+// //           width: 240,
+// //           background: "#13385a",
+// //           color: "#fff",
+// //           padding: 24,
+// //         }}
+// //       >
+// //         <h4>Broker Admin</h4>
+// //         <ul className="list-unstyled mt-4">
+// //           <li className="py-2">
+// //             <Link to="/admin" style={{ color: "#fff", textDecoration: "none" }}>
+// //               Dashboard
+// //             </Link>
+// //           </li>
+// //           <li className="py-2">
+// //             <Link
+// //               to="/admin/users"
+// //               style={{ color: "#fff", textDecoration: "none" }}
+// //             >
+// //               Users
+// //             </Link>
+// //           </li>
+// //           <li className="py-2">
+// //             <Link
+// //               to="/admin/CategoryManager"
+// //               style={{ color: "#fff", textDecoration: "none" }}
+// //             >
+// //               Category List
+// //             </Link>
+// //           </li>
+        
+          
+// //           <li className="py-2">
+// //             <Link
+// //               to="/admin/priceanalytics"
+// //               style={{ color: "#fff", textDecoration: "none" }}
+// //             >
+// //               Analytics
+// //             </Link>
+// //           </li>
+          
+// //           <li className="py-2">
+// //             <Link
+// //               to="/admin/pricelist"
+// //               style={{ color: "#fff", textDecoration: "none" }}
+// //             >
+// //               Price List
+// //             </Link>
+// //           </li>
+// //         </ul>
+// //         <button className="btn btn-danger mt-3" onClick={logout}>
+// //           Logout
+// //         </button>
+// //       </aside>
+
+// //       {/* Main Content */}
+// //       <main style={{ flex: 1, background: "#f6f9fc", padding: 24 }}>
+// //         <Outlet />
+// //       </main>
+// //     </div>
+// //   );
+// // }
+// import React, { useState } from "react";
 // import { Link, Outlet, useNavigate } from "react-router-dom";
+// // ✅ Import only specific icons (no sourcemap warnings)
+// import {
+//   Home,
+//   Users,
+//   List,
+//   BarChart2,
+//   DollarSign,
+//   LogOut,
+//   Menu,
+//   X,
+// } from "react-feather"; // Using react-feather (lightweight, no map warnings)
 
 // export default function AdminLayout() {
 //   const navigate = useNavigate();
+//   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
 //   const logout = () => {
 //     localStorage.clear();
@@ -10,74 +99,198 @@
 //   };
 
 //   return (
-//     <div style={{ display: "flex", minHeight: "100vh" }}>
+//     <div
+//       style={{
+//         display: "flex",
+//         minHeight: "100vh",
+//         backgroundColor: "#f6f9fc",
+//       }}
+//     >
 //       {/* Sidebar */}
 //       <aside
 //         style={{
-//           width: 240,
+//           width: isSidebarOpen ? 240 : 0,
 //           background: "#13385a",
 //           color: "#fff",
-//           padding: 24,
+//           padding: isSidebarOpen ? "24px" : 0,
+//           transition: "all 0.3s ease-in-out",
+//           overflow: "hidden",
+//           position: "fixed",
+//           height: "100vh",
+//           zIndex: 100,
 //         }}
 //       >
-//         <h4>Broker Admin</h4>
-//         <ul className="list-unstyled mt-4">
-//           <li className="py-2">
-//             <Link to="/admin" style={{ color: "#fff", textDecoration: "none" }}>
-//               Dashboard
+//         <div
+//           style={{
+//             display: "flex",
+//             justifyContent: "space-between",
+//             alignItems: "center",
+//           }}
+//         >
+//           <h4 style={{ margin: 0, fontSize: "1.2rem" }}>Broker Admin</h4>
+//           <button
+//             onClick={() => setIsSidebarOpen(false)}
+//             style={{
+//               background: "transparent",
+//               border: "none",
+//               color: "#fff",
+//               cursor: "pointer",
+//               display: "none",
+//             }}
+//             className="close-btn"
+//           >
+//             <X size={24} />
+//           </button>
+//         </div>
+
+//         <ul style={{ listStyle: "none", marginTop: 30, padding: 0 }}>
+//           <li style={styles.navItem}>
+//             <Link to="/admin" style={styles.link}>
+//               <Home size={18} style={styles.icon} /> Dashboard
 //             </Link>
 //           </li>
-//           <li className="py-2">
-//             <Link
-//               to="/admin/users"
-//               style={{ color: "#fff", textDecoration: "none" }}
-//             >
-//               Users
+//           <li style={styles.navItem}>
+//             <Link to="/admin/users" style={styles.link}>
+//               <Users size={18} style={styles.icon} /> Users
 //             </Link>
 //           </li>
-//           <li className="py-2">
-//             <Link
-//               to="/admin/CategoryManager"
-//               style={{ color: "#fff", textDecoration: "none" }}
-//             >
-//               Category List
+//           <li style={styles.navItem}>
+//             <Link to="/admin/CategoryManager" style={styles.link}>
+//               <List size={18} style={styles.icon} /> Category List
 //             </Link>
 //           </li>
-        
-          
-//           <li className="py-2">
-//             <Link
-//               to="/admin/priceanalytics"
-//               style={{ color: "#fff", textDecoration: "none" }}
-//             >
-//               Analytics
+//           <li style={styles.navItem}>
+//             <Link to="/admin/priceanalytics" style={styles.link}>
+//               <BarChart2 size={18} style={styles.icon} /> Analytics
 //             </Link>
 //           </li>
-          
-//           <li className="py-2">
-//             <Link
-//               to="/admin/pricelist"
-//               style={{ color: "#fff", textDecoration: "none" }}
-//             >
-//               Price List
+//           <li style={styles.navItem}>
+//             <Link to="/admin/pricelist" style={styles.link}>
+//               <DollarSign size={18} style={styles.icon} />  Sub Category
 //             </Link>
 //           </li>
 //         </ul>
-//         <button className="btn btn-danger mt-3" onClick={logout}>
-//           Logout
+
+//         <button
+//           onClick={logout}
+//           style={{
+//             background: "#e74c3c",
+//             border: "none",
+//             padding: "10px 14px",
+//             color: "#fff",
+//             borderRadius: 6,
+//             marginTop: 20,
+//             cursor: "pointer",
+//             width: "100%",
+//             fontWeight: 500,
+//             display: "flex",
+//             alignItems: "center",
+//             justifyContent: "center",
+//             gap: 6,
+//           }}
+//         >
+//           <LogOut size={18} /> Logout
 //         </button>
 //       </aside>
 
 //       {/* Main Content */}
-//       <main style={{ flex: 1, background: "#f6f9fc", padding: 24 }}>
-//         <Outlet />
+//       <main
+//         style={{
+//           flex: 1,
+//           marginLeft: isSidebarOpen ? 240 : 0,
+//           transition: "margin 0.3s ease-in-out",
+//           width: "100%",
+//         }}
+//       >
+//         {/* Top Bar */}
+//         <div
+//           style={{
+//             background: "#fff",
+//             padding: "12px 20px",
+//             boxShadow: "0 1px 4px rgba(0,0,0,0.1)",
+//             display: "flex",
+//             alignItems: "center",
+//             justifyContent: "space-between",
+//             position: "sticky",
+//             top: 0,
+//             zIndex: 99,
+//           }}
+//         >
+//           <button
+//             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+//             style={{
+//               background: "transparent",
+//               border: "none",
+//               cursor: "pointer",
+//               color: "#13385a",
+//             }}
+//           >
+//             <Menu size={26} />
+//           </button>
+//           <h3 style={{ margin: 0, color: "#13385a", fontWeight: 600 }}>
+//             Admin Dashboard
+//           </h3>
+//           <div></div>
+//         </div>
+
+//         <div style={{ padding: "24px" }}>
+//           <Outlet />
+//         </div>
 //       </main>
+
+//       {/* Responsive CSS */}
+//       <style>
+//         {`
+//           @media (max-width: 768px) {
+//             aside {
+//               position: fixed;
+//               top: 0;
+//               left: 0;
+//               height: 100vh;
+//               width: 220px;
+//               transform: translateX(${isSidebarOpen ? "0" : "-100%"});
+//               transition: transform 0.3s ease-in-out;
+//             }
+
+//             main {
+//               margin-left: 0 !important;
+//               width: 100%;
+//             }
+
+//             .close-btn {
+//               display: inline-block !important;
+//             }
+//           }
+//         `}
+//       </style>
 //     </div>
 //   );
 // }
+
+// const styles = {
+//   navItem: {
+//     padding: "10px 0",
+//   },
+//   link: {
+//     display: "flex",
+//     alignItems: "center",
+//     gap: 10,
+//     color: "#fff",
+//     textDecoration: "none",
+//     fontSize: 15,
+//     fontWeight: 500,
+//   },
+//   icon: {
+//     minWidth: 20,
+//   },
+// };
+
+
+
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
-// ✅ Import only specific icons (no sourcemap warnings)
+
+// Icons
 import {
   Home,
   Users,
@@ -87,7 +300,7 @@ import {
   LogOut,
   Menu,
   X,
-} from "react-feather"; // Using react-feather (lightweight, no map warnings)
+} from "react-feather";
 
 export default function AdminLayout() {
   const navigate = useNavigate();
@@ -96,6 +309,13 @@ export default function AdminLayout() {
   const logout = () => {
     localStorage.clear();
     navigate("/login", { replace: true });
+  };
+
+  // 👉 Mobile sidebar close function
+  const handleMobileClose = () => {
+    if (window.innerWidth <= 768) {
+      setIsSidebarOpen(false);
+    }
   };
 
   return (
@@ -128,6 +348,7 @@ export default function AdminLayout() {
           }}
         >
           <h4 style={{ margin: 0, fontSize: "1.2rem" }}>Broker Admin</h4>
+
           <button
             onClick={() => setIsSidebarOpen(false)}
             style={{
@@ -145,28 +366,48 @@ export default function AdminLayout() {
 
         <ul style={{ listStyle: "none", marginTop: 30, padding: 0 }}>
           <li style={styles.navItem}>
-            <Link to="/admin" style={styles.link}>
+            <Link to="/admin" style={styles.link} onClick={handleMobileClose}>
               <Home size={18} style={styles.icon} /> Dashboard
             </Link>
           </li>
+
           <li style={styles.navItem}>
-            <Link to="/admin/users" style={styles.link}>
+            <Link
+              to="/admin/users"
+              style={styles.link}
+              onClick={handleMobileClose}
+            >
               <Users size={18} style={styles.icon} /> Users
             </Link>
           </li>
+
           <li style={styles.navItem}>
-            <Link to="/admin/CategoryManager" style={styles.link}>
+            <Link
+              to="/admin/CategoryManager"
+              style={styles.link}
+              onClick={handleMobileClose}
+            >
               <List size={18} style={styles.icon} /> Category List
             </Link>
           </li>
+
           <li style={styles.navItem}>
-            <Link to="/admin/priceanalytics" style={styles.link}>
+            <Link
+              to="/admin/priceanalytics"
+              style={styles.link}
+              onClick={handleMobileClose}
+            >
               <BarChart2 size={18} style={styles.icon} /> Analytics
             </Link>
           </li>
+
           <li style={styles.navItem}>
-            <Link to="/admin/pricelist" style={styles.link}>
-              <DollarSign size={18} style={styles.icon} />  Sub Category
+            <Link
+              to="/admin/pricelist"
+              style={styles.link}
+              onClick={handleMobileClose}
+            >
+              <DollarSign size={18} style={styles.icon} /> Sub Category
             </Link>
           </li>
         </ul>
@@ -227,9 +468,11 @@ export default function AdminLayout() {
           >
             <Menu size={26} />
           </button>
+
           <h3 style={{ margin: 0, color: "#13385a", fontWeight: 600 }}>
             Admin Dashboard
           </h3>
+
           <div></div>
         </div>
 
@@ -284,4 +527,3 @@ const styles = {
     minWidth: 20,
   },
 };
-
