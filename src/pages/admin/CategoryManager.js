@@ -13,22 +13,18 @@
 //   const [categories, setCategories] = useState([]);
 //   const [catForm, setCatForm] = useState(emptyCategoryForm);
 //   const [editCatId, setEditCatId] = useState(null);
-//   const [expandedCat, setExpandedCat] = useState(null);
 
+//   const [expandedCat, setExpandedCat] = useState(null);
 //   const [subForm, setSubForm] = useState(emptySubForm);
 //   const [editSubInfo, setEditSubInfo] = useState({ catId: null, subId: null });
-
-//   const [catSaving, setCatSaving] = useState(false);
-//   const [subSaving, setSubSaving] = useState(false);
 
 //   const [currentPage, setCurrentPage] = useState(1);
 //   const itemsPerPage = 6;
 
-//   /* ------------------------ Fetch Categories ------------------------ */
+//   /* ------------------- Fetch Categories -------------------- */
 //   const fetchCategories = async () => {
 //     try {
 //       const res = await axios.get(API_BASE);
-
 //       const cats = res.data.categories || res.data.data || [];
 
 //       setCategories(
@@ -46,9 +42,9 @@
 //     fetchCategories();
 //   }, []);
 
-//   /* ------------------------ Category Input ------------------------ */
+//   /* ------------------- Category Input -------------------- */
 //   const onCatInputChange = (e) => {
-//     const { name, files, value } = e.target;
+//     const { name, value, files } = e.target;
 //     if (files) {
 //       setCatForm((p) => ({ ...p, image: files[0] }));
 //     } else {
@@ -56,9 +52,10 @@
 //     }
 //   };
 
-//   /* ------------------------ Save Category ------------------------ */
+//   /* ------------------- Save Category -------------------- */
 //   const submitCategory = async (e) => {
 //     e.preventDefault();
+
 //     if (!catForm.name.trim()) return toast.warn("Enter category name");
 
 //     const fd = new FormData();
@@ -66,8 +63,6 @@
 //     if (catForm.image) fd.append("image", catForm.image);
 
 //     try {
-//       setCatSaving(true);
-
 //       if (editCatId) {
 //         await axios.put(`${API_BASE}/${editCatId}`, fd);
 //         toast.success("Category updated");
@@ -81,19 +76,13 @@
 //       fetchCategories();
 //     } catch {
 //       toast.error("Save failed");
-//     } finally {
-//       setCatSaving(false);
 //     }
 //   };
 
-//   const startEditCategory = (cat) => {
-//     setEditCatId(cat._id);
-//     setCatForm({ name: cat.name, image: null });
-//     window.scrollTo({ top: 0, behavior: "smooth" });
-//   };
-
+//   /* ------------------- Delete Category -------------------- */
 //   const deleteCategory = async (id) => {
 //     if (!window.confirm("Delete this category?")) return;
+
 //     try {
 //       await axios.delete(`${API_BASE}/${id}`);
 //       toast.success("Category deleted");
@@ -102,89 +91,81 @@
 //       toast.error("Delete failed");
 //     }
 //   };
-// /* ------------------------ Subcategory Input ------------------------ */
-// const onSubInputChange = (e) => {
-//   const { name, value, files } = e.target;
-//   if (files) {
-//     setSubForm((p) => ({ ...p, image: files[0] }));
-//   } else {
-//     setSubForm((p) => ({ ...p, [name]: value }));
-//   }
-// };
 
-// /* ------------------------ Save Subcategory ------------------------ */
-// const submitSub = async (e, catId) => {
-//   e.preventDefault();
-//   if (!subForm.name.trim()) return toast.warn("Enter subcategory name");
-
-//   const fd = new FormData();
-//   fd.append("name", subForm.name);
-//   if (subForm.image) fd.append("image", subForm.image);
-
-//   try {
-//     setSubSaving(true);
-
-//     if (editSubInfo.subId) {
-//       await axios.put(
-//         `${API_BASE}/${editSubInfo.catId}/sub/${editSubInfo.subId}`,
-//         fd
-//       );
-//       toast.success("Subcategory updated");
+//   /* ------------------- Sub Input -------------------- */
+//   const onSubInputChange = (e) => {
+//     const { name, value, files } = e.target;
+//     if (files) {
+//       setSubForm((p) => ({ ...p, image: files[0] }));
 //     } else {
-//       await axios.post(`${API_BASE}/${catId}/sub`, fd);
-//       toast.success("Subcategory added");
+//       setSubForm((p) => ({ ...p, [name]: value }));
 //     }
+//   };
 
-//     setSubForm(emptySubForm);
-//     setEditSubInfo({ catId: null, subId: null });
-//     fetchCategories();
-//   } catch {
-//     toast.error("Save failed");
-//   } finally {
-//     setSubSaving(false);
-//   }
-// };
+//   /* ------------------- Save Subcategory -------------------- */
+//   const submitSub = async (e, catId) => {
+//     e.preventDefault();
 
-// /* ------------------------ Start Edit Sub ------------------------ */
-// const startEditSub = (catId, sub) => {
-//   setExpandedCat(catId); // open that category
-//   setEditSubInfo({ catId, subId: sub._id });
-//   setSubForm({ name: sub.name, image: null });
-// };
+//     if (!subForm.name.trim()) return toast.warn("Enter subcategory name");
 
-// /* ------------------------ Delete Subcategory ------------------------ */
-// const deleteSub = async (catId, subId) => {
-//   if (!window.confirm("Delete this subcategory?")) return;
+//     const fd = new FormData();
+//     fd.append("name", subForm.name);
+//     if (subForm.image) fd.append("image", subForm.image);
 
-//   try {
-//     await axios.delete(`${API_BASE}/${catId}/sub/${subId}`);
-//     toast.success("Subcategory deleted");
-//     fetchCategories();
-//   } catch {
-//     toast.error("Delete failed");
-//   }
-// };
+//     try {
+//       if (editSubInfo.subId) {
+//         await axios.put(
+//           `${API_BASE}/${editSubInfo.catId}/sub/${editSubInfo.subId}`,
+//           fd
+//         );
+//         toast.success("Subcategory updated");
+//       } else {
+//         await axios.post(`${API_BASE}/${catId}/sub`, fd);
+//         toast.success("Subcategory added");
+//       }
 
+//       setSubForm(emptySubForm);
+//       setEditSubInfo({ catId: null, subId: null });
+//       fetchCategories();
+//     } catch {
+//       toast.error("Save failed");
+//     }
+//   };
 
-//   /* ------------------------ Pagination ------------------------ */
+//   /* ------------------- Delete Subcategory -------------------- */
+//   const deleteSub = async (catId, subId) => {
+//     if (!window.confirm("Delete this subcategory?")) return;
+
+//     try {
+//       await axios.delete(`${API_BASE}/${catId}/sub/${subId}`);
+//       toast.success("Subcategory deleted");
+//       fetchCategories();
+//     } catch {
+//       toast.error("Delete failed");
+//     }
+//   };
+
+//   /* ------------------- Pagination -------------------- */
 //   const lastIndex = currentPage * itemsPerPage;
 //   const firstIndex = lastIndex - itemsPerPage;
+
 //   const currentCats = categories.slice(firstIndex, lastIndex);
 //   const totalPages = Math.ceil(categories.length / itemsPerPage);
 
-//   /* ------------------------ UI ------------------------ */
+//   /* ------------------- UI -------------------- */
+
 //   return (
 //     <div className="category-container">
 //       <ToastContainer />
 
 //       <div className="header">
 //         <h2>📂 Category Manager</h2>
-//         <p>Add categories & subcategories (Name + Image only in list)</p>
+//         <p>Add categories & subcategories (mobile-friendly)</p>
 //       </div>
 
-//       {/* ---------------- Category Form ---------------- */}
+//       {/* Category Form */}
 //       <form className="category-form" onSubmit={submitCategory}>
-//         <div className="form-row top-row">
+//         <div className="form-row">
 //           <input
 //             name="name"
 //             type="text"
@@ -192,19 +173,31 @@
 //             value={catForm.name}
 //             onChange={onCatInputChange}
 //           />
-//           <input name="image" type="file" accept="image/*" onChange={onCatInputChange} />
 
-//           <button type="submit">{editCatId ? "Update Category" : "Add Category"}</button>
+//           <input
+//             name="image"
+//             type="file"
+//             accept="image/*"
+//             onChange={onCatInputChange}
+//           />
+
+//           <button type="submit">
+//             {editCatId ? "Update Category" : "Add Category"}
+//           </button>
 
 //           {editCatId && (
-//             <button className="cancel-btn" type="button" onClick={() => setEditCatId(null)}>
+//             <button
+//               className="cancel-btn"
+//               type="button"
+//               onClick={() => setEditCatId(null)}
+//             >
 //               Cancel
 //             </button>
 //           )}
 //         </div>
 //       </form>
 
-//       {/* ---------------- Category Table ---------------- */}
+//       {/* ------------------ Desktop Table ------------------ */}
 //       <div className="category-list">
 //         <table>
 //           <thead>
@@ -222,7 +215,6 @@
 //               <React.Fragment key={cat._id}>
 //                 <tr>
 //                   <td>{firstIndex + i + 1}</td>
-
 //                   <td>
 //                     {cat.image ? (
 //                       <img src={cat.image} className="table-img" />
@@ -230,11 +222,10 @@
 //                       "No Image"
 //                     )}
 //                   </td>
-
 //                   <td>{cat.name}</td>
 
 //                   <td>
-//                     {(cat.subcategories || []).length}{" "}
+//                     {cat.subcategories.length}{" "}
 //                     <button
 //                       className="small-btn"
 //                       onClick={() =>
@@ -246,42 +237,45 @@
 //                   </td>
 
 //                   <td>
-//                     <button className="edit-btn" onClick={() => startEditCategory(cat)}>
+//                     <button onClick={() => setEditCatId(cat._id)} className="edit-btn">
 //                       Edit
 //                     </button>
-//                     <button className="delete-btn" onClick={() => deleteCategory(cat._id)}>
+//                     <button onClick={() => deleteCategory(cat._id)} className="delete-btn">
 //                       Delete
 //                     </button>
 //                   </td>
 //                 </tr>
 
-//                 {/* Subcategories */}
+//                 {/* Sub category section */}
 //                 {expandedCat === cat._id && (
 //                   <tr>
 //                     <td colSpan="5">
 //                       <div className="sub-section">
-//                         <h4>Sub-categories of {cat.name}</h4>
+//                         <h4>{cat.name} - Subcategories</h4>
 
 //                         <div className="sub-list">
 //                           {cat.subcategories.map((sub) => (
 //                             <div className="sub-item" key={sub._id}>
 //                               <div className="sub-left">
-//                                 {sub.image ? (
-//                                   <img src={sub.image} className="sub-thumb" />
-//                                 ) : (
-//                                   <div className="sub-thumb placeholder">No Image</div>
-//                                 )}
-
-//                                 <span>{sub.name}</span>
+//                                 <img
+//                                   src={sub.image}
+//                                   className="sub-thumb"
+//                                   alt=""
+//                                 />
+//                                 <div className="sub-name">{sub.name}</div>
 //                               </div>
 
 //                               <div className="sub-actions">
 //                                 <button
 //                                   className="edit-btn small"
-//                                   onClick={() => startEditSub(cat._id, sub)}
+//                                   onClick={() =>
+//                                     setEditSubInfo({ catId: cat._id, subId: sub._id }) ||
+//                                     setSubForm({ name: sub.name })
+//                                   }
 //                                 >
 //                                   Edit
 //                                 </button>
+
 //                                 <button
 //                                   className="delete-btn small"
 //                                   onClick={() => deleteSub(cat._id, sub._id)}
@@ -293,7 +287,7 @@
 //                           ))}
 //                         </div>
 
-//                         {/* Sub form */}
+//                         {/* Sub Form */}
 //                         <form
 //                           className="sub-form"
 //                           onSubmit={(e) => submitSub(e, cat._id)}
@@ -327,6 +321,101 @@
 //         </table>
 //       </div>
 
+//       {/* ------------------ Mobile Cards ------------------ */}
+//       <div className="category-cards">
+//         {currentCats.map((cat, i) => (
+//           <div key={cat._id} className="category-card">
+
+//             <div className="card-top">
+//               <div className="index-badge">{firstIndex + i + 1}</div>
+
+//               <div>
+//                 <button className="edit-btn" onClick={() => setEditCatId(cat._id)}>
+//                   Edit
+//                 </button>
+//                 <button className="delete-btn" onClick={() => deleteCategory(cat._id)}>
+//                   Delete
+//                 </button>
+//               </div>
+//             </div>
+
+//             {cat.image && <img src={cat.image} className="mobile-img" />}
+
+//             <div className="card-body">
+//               <p><strong>Name:</strong> {cat.name}</p>
+//               <p><strong>Subcategories:</strong> {cat.subcategories.length}</p>
+
+//               <button
+//                 className="small-btn"
+//                 onClick={() =>
+//                   setExpandedCat(expandedCat === cat._id ? null : cat._id)
+//                 }
+//               >
+//                 {expandedCat === cat._id ? "Hide" : "Manage"}
+//               </button>
+
+//               {expandedCat === cat._id && (
+//                 <div className="sub-mobile-box">
+//                   <h4 className="sub-mobile-title">Subcategories</h4>
+
+//                   {cat.subcategories.map((sub) => (
+//                     <div key={sub._id} className="sub-mobile-item">
+//                       <img src={sub.image} alt="" />
+
+//                       <p>{sub.name}</p>
+
+//                       <div className="submobile-actions">
+//                         <button
+//                           className="edit-btn small"
+//                           onClick={() =>
+//                             setEditSubInfo({ catId: cat._id, subId: sub._id }) ||
+//                             setSubForm({ name: sub.name })
+//                           }
+//                         >
+//                           Edit
+//                         </button>
+
+//                         <button
+//                           className="delete-btn small"
+//                           onClick={() => deleteSub(cat._id, sub._id)}
+//                         >
+//                           Delete
+//                         </button>
+//                       </div>
+//                     </div>
+//                   ))}
+
+//                   {/* Sub Form in Mobile */}
+//                   <form
+//                     className="sub-form"
+//                     onSubmit={(e) => submitSub(e, cat._id)}
+//                   >
+//                     <input
+//                       name="name"
+//                       type="text"
+//                       placeholder="Subcategory name"
+//                       value={subForm.name}
+//                       onChange={onSubInputChange}
+//                     />
+
+//                     <input
+//                       name="image"
+//                       type="file"
+//                       accept="image/*"
+//                       onChange={onSubInputChange}
+//                     />
+
+//                     <button type="submit">
+//                       {editSubInfo.subId ? "Update Sub" : "Add Sub"}
+//                     </button>
+//                   </form>
+//                 </div>
+//               )}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+
 //       {/* Pagination */}
 //       <div className="pagination">
 //         <button disabled={currentPage === 1} onClick={() => setCurrentPage((p) => p - 1)}>
@@ -356,8 +445,7 @@
 
 // export default CategoryManager;
 
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -380,12 +468,23 @@ const CategoryManager = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
+  const [searchText, setSearchText] = useState("");
+
+  // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalMode, setModalMode] = useState("category"); // "category" | "subcategory"
+  const [modalTarget, setModalTarget] = useState({ catId: null, subId: null });
+
+  // local preview for modal image
+  const [modalPreview, setModalPreview] = useState(null);
+
+  const fileInputRef = useRef(null);
+
   /* ------------------- Fetch Categories -------------------- */
   const fetchCategories = async () => {
     try {
       const res = await axios.get(API_BASE);
       const cats = res.data.categories || res.data.data || [];
-
       setCategories(
         cats.map((c) => ({
           ...c,
@@ -393,6 +492,7 @@ const CategoryManager = () => {
         }))
       );
     } catch (err) {
+      console.error(err);
       toast.error("Failed to load categories");
     }
   };
@@ -411,7 +511,7 @@ const CategoryManager = () => {
     }
   };
 
-  /* ------------------- Save Category -------------------- */
+  /* ------------------- Save Category (Add / Update) -------------------- */
   const submitCategory = async (e) => {
     e.preventDefault();
 
@@ -429,11 +529,11 @@ const CategoryManager = () => {
         await axios.post(API_BASE, fd);
         toast.success("Category added");
       }
-
       setCatForm(emptyCategoryForm);
       setEditCatId(null);
       fetchCategories();
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast.error("Save failed");
     }
   };
@@ -441,12 +541,12 @@ const CategoryManager = () => {
   /* ------------------- Delete Category -------------------- */
   const deleteCategory = async (id) => {
     if (!window.confirm("Delete this category?")) return;
-
     try {
       await axios.delete(`${API_BASE}/${id}`);
       toast.success("Category deleted");
       fetchCategories();
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast.error("Delete failed");
     }
   };
@@ -486,7 +586,8 @@ const CategoryManager = () => {
       setSubForm(emptySubForm);
       setEditSubInfo({ catId: null, subId: null });
       fetchCategories();
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast.error("Save failed");
     }
   };
@@ -499,62 +600,176 @@ const CategoryManager = () => {
       await axios.delete(`${API_BASE}/${catId}/sub/${subId}`);
       toast.success("Subcategory deleted");
       fetchCategories();
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast.error("Delete failed");
     }
   };
 
+  /* ------------------- Modal handlers -------------------- */
+  const openCategoryModal = (cat) => {
+    setModalMode("category");
+    setModalTarget({ catId: cat._id, subId: null });
+    setModalPreview(cat.image || null);
+    setCatForm({ name: cat.name || "", image: null });
+    setIsModalOpen(true);
+  };
+
+  const openSubModal = (cat, sub) => {
+    setModalMode("subcategory");
+    setModalTarget({ catId: cat._id, subId: sub._id });
+    setModalPreview(sub.image || null);
+    setSubForm({ name: sub.name || "", image: null });
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalPreview(null);
+    setModalTarget({ catId: null, subId: null });
+    setCatForm(emptyCategoryForm);
+    setSubForm(emptySubForm);
+    setEditCatId(null);
+    setEditSubInfo({ catId: null, subId: null });
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const handleModalImageChange = (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (file) {
+      setModalPreview(URL.createObjectURL(file));
+      if (modalMode === "category") {
+        setCatForm((p) => ({ ...p, image: file }));
+      } else {
+        setSubForm((p) => ({ ...p, image: file }));
+      }
+    }
+  };
+
+  const saveModal = async (e) => {
+    e.preventDefault();
+    try {
+      if (modalMode === "category") {
+        if (!catForm.name.trim()) return toast.warn("Enter category name");
+        const fd = new FormData();
+        fd.append("name", catForm.name);
+        if (catForm.image) fd.append("image", catForm.image);
+        await axios.put(`${API_BASE}/${modalTarget.catId}`, fd);
+        toast.success("Category updated");
+      } else {
+        if (!subForm.name.trim()) return toast.warn("Enter subcategory name");
+        const fd = new FormData();
+        fd.append("name", subForm.name);
+        if (subForm.image) fd.append("image", subForm.image);
+        await axios.put(
+          `${API_BASE}/${modalTarget.catId}/sub/${modalTarget.subId}`,
+          fd
+        );
+        toast.success("Subcategory updated");
+      }
+      closeModal();
+      fetchCategories();
+    } catch (err) {
+      console.error(err);
+      toast.error("Update failed");
+    }
+  };
+
+  /* ------------------- Search filter -------------------- */
+  const filterCategories = (cats, q) => {
+    if (!q || !q.trim()) return cats;
+    const t = q.trim().toLowerCase();
+
+    // show categories where category name matches OR any subcategory matches
+    return cats
+      .map((c) => {
+        const matchedSubs = c.subcategories.filter((s) =>
+          (s.name || "").toLowerCase().includes(t)
+        );
+        const categoryMatches = (c.name || "").toLowerCase().includes(t);
+        if (categoryMatches) return { ...c }; // show full category
+        if (matchedSubs.length) {
+          // if only sub matches, include category but only matched subs (for clarity)
+          return { ...c, subcategories: matchedSubs };
+        }
+        return null;
+      })
+      .filter(Boolean);
+  };
+
   /* ------------------- Pagination -------------------- */
+  const filtered = filterCategories(categories, searchText);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / itemsPerPage));
+  useEffect(() => {
+    if (currentPage > totalPages) setCurrentPage(1);
+    
+  }, [filtered.length, totalPages]);
+
   const lastIndex = currentPage * itemsPerPage;
   const firstIndex = lastIndex - itemsPerPage;
-
-  const currentCats = categories.slice(firstIndex, lastIndex);
-  const totalPages = Math.ceil(categories.length / itemsPerPage);
+  const currentCats = filtered.slice(firstIndex, lastIndex);
 
   /* ------------------- UI -------------------- */
-
   return (
     <div className="category-container">
       <ToastContainer />
-
+ 
       <div className="header">
         <h2>📂 Category Manager</h2>
         <p>Add categories & subcategories (mobile-friendly)</p>
+
+<input
+          className="search-input"
+          placeholder="Search categories or subcategories..."
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+            setCurrentPage(1);
+          }}
+        /> 
+        
       </div>
 
-      {/* Category Form */}
-      <form className="category-form" onSubmit={submitCategory}>
-        <div className="form-row">
-          <input
-            name="name"
-            type="text"
-            placeholder="Enter category name"
-            value={catForm.name}
-            onChange={onCatInputChange}
-          />
+     
 
-          <input
-            name="image"
-            type="file"
-            accept="image/*"
-            onChange={onCatInputChange}
-          />
+      {/* Search + Category Form */}
+      <div className="top-row">
+        
+        
 
-          <button type="submit">
-            {editCatId ? "Update Category" : "Add Category"}
-          </button>
+        <form className="category-form" onSubmit={submitCategory}>
+          <div className="form-row">
+            <input
+              name="name"
+              type="text"
+              placeholder="Enter category name"
+              value={catForm.name}
+              onChange={onCatInputChange}
+            />
 
-          {editCatId && (
-            <button
-              className="cancel-btn"
-              type="button"
-              onClick={() => setEditCatId(null)}
-            >
-              Cancel
+            <input
+              name="image"
+              type="file"
+              accept="image/*"
+              onChange={onCatInputChange}
+            />
+
+            <button type="submit">
+              {editCatId ? "Update Category" : "Add Category"}
             </button>
-          )}
-        </div>
-      </form>
+
+            {editCatId && (
+              <button
+                className="cancel-btn"
+                type="button"
+                onClick={() => setEditCatId(null)}
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
+      </div>
 
       {/* ------------------ Desktop Table ------------------ */}
       <div className="category-list">
@@ -576,7 +791,7 @@ const CategoryManager = () => {
                   <td>{firstIndex + i + 1}</td>
                   <td>
                     {cat.image ? (
-                      <img src={cat.image} className="table-img" />
+                      <img src={cat.image} className="table-img" alt="" />
                     ) : (
                       "No Image"
                     )}
@@ -596,10 +811,16 @@ const CategoryManager = () => {
                   </td>
 
                   <td>
-                    <button onClick={() => setEditCatId(cat._id)} className="edit-btn">
+                    <button
+                      onClick={() => openCategoryModal(cat)}
+                      className="edit-btn"
+                    >
                       Edit
                     </button>
-                    <button onClick={() => deleteCategory(cat._id)} className="delete-btn">
+                    <button
+                      onClick={() => deleteCategory(cat._id)}
+                      className="delete-btn"
+                    >
                       Delete
                     </button>
                   </td>
@@ -616,21 +837,22 @@ const CategoryManager = () => {
                           {cat.subcategories.map((sub) => (
                             <div className="sub-item" key={sub._id}>
                               <div className="sub-left">
-                                <img
-                                  src={sub.image}
-                                  className="sub-thumb"
-                                  alt=""
-                                />
+                                {sub.image ? (
+                                  <img
+                                    src={sub.image}
+                                    className="sub-thumb"
+                                    alt=""
+                                  />
+                                ) : (
+                                  <div className="sub-thumb no-img">No</div>
+                                )}
                                 <div className="sub-name">{sub.name}</div>
                               </div>
 
                               <div className="sub-actions">
                                 <button
                                   className="edit-btn small"
-                                  onClick={() =>
-                                    setEditSubInfo({ catId: cat._id, subId: sub._id }) ||
-                                    setSubForm({ name: sub.name })
-                                  }
+                                  onClick={() => openSubModal(cat, sub)}
                                 >
                                   Edit
                                 </button>
@@ -684,12 +906,11 @@ const CategoryManager = () => {
       <div className="category-cards">
         {currentCats.map((cat, i) => (
           <div key={cat._id} className="category-card">
-
             <div className="card-top">
               <div className="index-badge">{firstIndex + i + 1}</div>
 
               <div>
-                <button className="edit-btn" onClick={() => setEditCatId(cat._id)}>
+                <button className="edit-btn" onClick={() => openCategoryModal(cat)}>
                   Edit
                 </button>
                 <button className="delete-btn" onClick={() => deleteCategory(cat._id)}>
@@ -698,11 +919,15 @@ const CategoryManager = () => {
               </div>
             </div>
 
-            {cat.image && <img src={cat.image} className="mobile-img" />}
+            {cat.image && <img src={cat.image} className="mobile-img" alt="" />}
 
             <div className="card-body">
-              <p><strong>Name:</strong> {cat.name}</p>
-              <p><strong>Subcategories:</strong> {cat.subcategories.length}</p>
+              <p>
+                <strong>Name:</strong> {cat.name}
+              </p>
+              <p>
+                <strong>Subcategories:</strong> {cat.subcategories.length}
+              </p>
 
               <button
                 className="small-btn"
@@ -719,17 +944,14 @@ const CategoryManager = () => {
 
                   {cat.subcategories.map((sub) => (
                     <div key={sub._id} className="sub-mobile-item">
-                      <img src={sub.image} alt="" />
+                      {sub.image ? <img src={sub.image} alt="" /> : <div className="no-thumb-mobile">No</div>}
 
                       <p>{sub.name}</p>
 
                       <div className="submobile-actions">
                         <button
                           className="edit-btn small"
-                          onClick={() =>
-                            setEditSubInfo({ catId: cat._id, subId: sub._id }) ||
-                            setSubForm({ name: sub.name })
-                          }
+                          onClick={() => openSubModal(cat, sub)}
                         >
                           Edit
                         </button>
@@ -791,17 +1013,83 @@ const CategoryManager = () => {
           </button>
         ))}
 
-        <button
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage((p) => p + 1)}
-        >
+        <button disabled={currentPage === totalPages} onClick={() => setCurrentPage((p) => p + 1)}>
           Next
         </button>
       </div>
+
+      {/* ------------------- Modal (simple centered) ------------------- */}
+      {isModalOpen && (
+        <div className="cm-modal-overlay" onMouseDown={closeModal}>
+          <div className="cm-modal" onMouseDown={(e) => e.stopPropagation()}>
+            <h3>{modalMode === "category" ? "Edit Category" : "Edit Subcategory"}</h3>
+
+            <form onSubmit={saveModal} className="cm-modal-form">
+              {modalMode === "category" ? (
+                <>
+                  <label className="modal-label">Name</label>
+                  <input
+                    name="name"
+                    value={catForm.name}
+                    onChange={(e) => setCatForm((p) => ({ ...p, name: e.target.value }))}
+                  />
+
+                  <label className="modal-label">Image</label>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleModalImageChange}
+                  />
+
+                  {modalPreview && (
+                    <div className="modal-preview">
+                      <img src={modalPreview} alt="preview" />
+                    </div>
+                  )}
+                </>
+              ) : (
+                <>
+                  <label className="modal-label">Subcategory Name</label>
+                  <input
+                    name="name"
+                    value={subForm.name}
+                    onChange={(e) => setSubForm((p) => ({ ...p, name: e.target.value }))}
+                  />
+
+                  <label className="modal-label">Image</label>
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    onChange={handleModalImageChange}
+                  />
+
+                  {modalPreview && (
+                    <div className="modal-preview">
+                      <img src={modalPreview} alt="preview" />
+                    </div>
+                  )}
+                </>
+              )}
+
+              <div className="modal-actions">
+                <button type="submit" className="btn-primary">
+                  Update
+                </button>
+                <button type="button" className="btn-cancel" onClick={closeModal}>
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
 
 export default CategoryManager;
+
 
 
