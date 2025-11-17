@@ -1,5 +1,3 @@
-
- /* 🌟 MAIN CONTAINER */
 .price-container {
   max-width: 1250px;
   margin: auto;
@@ -252,18 +250,18 @@ table img {
 
 /* STATUS */
 .status-active {
-  background: #0ead69;
+  background: #93d8ba;
   padding: 7px 12px;
   border-radius: 8px;
-  color: white;
+  color: black;
   font-weight: 600;
 }
 
 .status-inactive {
-  background: #d62828;
+  background: #d9b1b1;
   padding: 7px 12px;
   border-radius: 8px;
-  color: white;
+  color: black;
   font-weight: 600;
 }
 
