@@ -367,3 +367,153 @@ button:hover {
     width: 100%;
   }
 }
+/* ---------- added top search and modal styles ---------- */
+
+/* search + top row */
+.top-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  min-width: 260px;
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #d7dfe9;
+  background: #f8fafc;
+}
+
+/* adjust original .category-form within top-row: keep it compact on desktop */
+.category-form .form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Modal overlay & centered card */
+.cm-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 20, 30, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.cm-modal {
+  width: 520px;
+  max-width: 96%;
+  background: #fff;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 10px 35px rgba(10, 30, 60, 0.18);
+  border: 1px solid #e9f0ff;
+}
+
+.cm-modal h3 {
+  margin: 0 0 12px 0;
+  color: #13385a;
+  font-size: 20px;
+}
+
+/* modal form */
+.cm-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cm-modal-form input[type="text"],
+.cm-modal-form input[type="file"] {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d7dfe9;
+  background: #fbfdff;
+}
+
+.modal-label {
+  font-size: 13px;
+  color: #4b5563;
+  margin-top: 6px;
+}
+
+.modal-preview {
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-preview img {
+  width: 140px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #e3e8ef;
+}
+
+/* modal buttons */
+.modal-actions {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+.btn-primary {
+  background: #13385a;
+  color: #fff;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-cancel {
+  background: #e6eefc;
+  color: #13385a;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* small improvements for sub thumb placeholder */
+.sub-thumb.no-img,
+.no-thumb-mobile {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  background: #f1f3f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #98a0ab;
+}
+
+/* responsive tweaks (modal full width on mobile) */
+@media (max-width: 520px) {
+  .cm-modal {
+    width: 100%;
+    height: auto;
+    max-height: 92vh;
+    overflow: auto;
+    padding: 16px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+    gap: 8px;
+  }
+
+  .top-row {
+    flex-direction: column;
+  }
+}
