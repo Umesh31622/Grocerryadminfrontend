@@ -1,0 +1,197 @@
+/* MAIN CONTAINER */
+.price-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+  font-family: "Inter", sans-serif;
+}
+
+/* HEADER */
+.header-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.header-section h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #13385a;
+}
+
+.header-section p {
+  color: #6c757d;
+}
+
+/* FILTER BAR */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.filter-bar input,
+.filter-bar select {
+  padding: 10px 14px;
+  border: 1px solid #d0d7e3;
+  border-radius: 10px;
+  background: #f8fafc;
+  font-size: 15px;
+}
+
+.filter-bar input {
+  flex: 1;
+  min-width: 250px;
+}
+
+.filter-bar select {
+  min-width: 200px;
+}
+
+/* TABLE WRAPPER */
+.table-card {
+  background: #fff;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.table-header h2 {
+  font-size: 22px;
+  color: #13385a;
+}
+
+/* DESKTOP TABLE */
+.table-card table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.table-card th,
+.table-card td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #e8edf3;
+  font-size: 14px;
+}
+
+.table-card th {
+  background: #f0f6ff;
+  color: #13385a;
+  font-weight: 600;
+}
+
+.table-card td img {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #d7dfe9;
+}
+
+/* STATUS COLORS */
+.status-active {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.status-inactive {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+/* PAGINATION */
+.pagination {
+  margin-top: 18px;
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.pagination button {
+  background: #13385a;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.pagination button:hover {
+  transform: translateY(-2px);
+}
+
+.active-page {
+  background: #ffc107 !important;
+  color: black !important;
+}
+
+/* MOBILE VIEW */
+.mobile-list {
+  display: none;
+}
+
+.mobile-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.mobile-card img {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.mobile-card h3 {
+  margin: 8px 0 3px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #13385a;
+}
+
+.mobile-card p {
+  margin: 3px 0;
+  font-size: 14px;
+}
+
+.mobile-card .status-active,
+.mobile-card .status-inactive {
+  margin-top: 6px;
+  display: inline-block;
+}
+
+/* RESPONSIVE RULES */
+@media (max-width: 768px) {
+
+  /* Hide desktop table */
+  table {
+    display: none !important;
+  }
+
+  .mobile-list {
+    display: block;
+  }
+
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .filter-bar input,
+  .filter-bar select {
+    width: 100%;
+  }
+}
