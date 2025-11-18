@@ -99,7 +99,7 @@ export default function Login() {
       localStorage.setItem("role", res.data.role);
       localStorage.setItem("name", res.data.name || "Admin");
 
-      navigate("/admin", { replace: true });
+      navigate("/admin/users", { replace: true });
     } catch (err) {
       console.error(err);
       alert(err.response?.data?.message || "Login failed — check credentials & server");
