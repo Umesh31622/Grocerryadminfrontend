@@ -36,7 +36,6 @@
   border-radius: 14px;
   margin-bottom: 25px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.07);
-
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
@@ -66,10 +65,27 @@
 }
 
 /* -----------------------------------------------------
-   DESKTOP TABLE
+   TABLE WRAPPER (HORIZONTAL SCROLL)
 ----------------------------------------------------- */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table-wrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+/* TABLE */
 .users-table {
   width: 100%;
+  min-width: 750px;
   border-collapse: collapse;
   border-radius: 16px;
   overflow: hidden;
@@ -88,13 +104,6 @@
   color: #13385a;
 }
 
-.users-table img {
-  width: 50px;
-  height: 50px;
-  border-radius: 8px;
-}
-
-/* Password column desktop */
 .password-col {
   max-width: 200px;
   word-break: break-word;
@@ -123,78 +132,55 @@
 }
 
 /* -----------------------------------------------------
-   BUTTONS
+   3 DOTS MENU CSS
 ----------------------------------------------------- */
-.edit-btn {
-  background: #ffc107;
-  padding: 7px 12px;
-  border-radius: 7px;
+.action-cell {
+  position: relative;
 }
 
-.delete-btn {
-  background: #dc3545;
-  padding: 7px 12px;
-  border-radius: 7px;
-  color: #fff;
+.dots-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  right: 0;
+  top: 32px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.15);
+  width: 130px;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 10px 12px;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background: #f1f5f9;
 }
 
 /* -----------------------------------------------------
-   MOBILE RESPONSIVE
+   MOBILE - TABLE WITH SCROLL
 ----------------------------------------------------- */
-.users-cards {
-  display: none;
-}
-
 @media (max-width: 768px) {
-  /* Hide Table */
   .users-table {
-    display: none !important;
+    display: table !important;
   }
 
-  /* Show Cards */
-  .users-cards {
-    display: grid !important;
-    gap: 16px;
-  }
-
-  .user-card {
-    background: #fff;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 3px 12px rgba(0,0,0,0.1);
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-  }
-
-  .card-index {
-    color: #13385a;
-    font-weight: bold;
-  }
-
-  .mobile-password {
-    font-family: monospace;
-    font-size: 13px;
-    color: #475569;
-    word-break: break-word;
-  }
-
-  .card-body p {
-    margin: 4px 0;
-    font-size: 14px;
-  }
-
-  /* Buttons full width on mobile */
-  .card-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  .card-actions button {
-    flex: 1;
+  .table-wrapper {
+    overflow-x: auto !important;
   }
 }
