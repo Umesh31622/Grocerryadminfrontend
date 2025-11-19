@@ -1,7 +1,84 @@
+// // // import React from "react";
+// // // import { Link, Outlet, useNavigate } from "react-router-dom";
+
+// // // export default function AdminLayout() {
+// // //   const navigate = useNavigate();
+
+// // //   const logout = () => {
+// // //     localStorage.clear();
+// // //     navigate("/login", { replace: true });
+// // //   };
+
+// // //   return (
+// // //     <div style={{ display: "flex", minHeight: "100vh" }}>
+// // //       {/* Sidebar */}
+// // //       <aside
+// // //         style={{
+// // //           width: 240,
+// // //           background: "#13385a",
+// // //           color: "#fff",
+// // //           padding: 24,
+// // //         }}
+// // //       >
+// // //         <h4>Broker Admin</h4>
+// // //         <ul className="list-unstyled mt-4">
+// // //           <li className="py-2">
+// // //             <Link to="/admin" style={{ color: "#fff", textDecoration: "none" }}>
+// // //               Dashboard
+// // //             </Link>
+// // //           </li>
+// // //           <li className="py-2">
+// // //             <Link
+// // //               to="/admin/users"
+// // //               style={{ color: "#fff", textDecoration: "none" }}
+// // //             >
+// // //               Users
+// // //             </Link>
+// // //           </li>
+// // //           <li className="py-2">
+// // //             <Link
+// // //               to="/admin/CategoryManager"
+// // //               style={{ color: "#fff", textDecoration: "none" }}
+// // //             >
+// // //               Category List
+// // //             </Link>
+// // //           </li>
+        
+          
+// // //           <li className="py-2">
+// // //             <Link
+// // //               to="/admin/priceanalytics"
+// // //               style={{ color: "#fff", textDecoration: "none" }}
+// // //             >
+// // //               Analytics
+// // //             </Link>
+// // //           </li>
+          
+// // //           <li className="py-2">
+// // //             <Link
+// // //               to="/admin/pricelist"
+// // //               style={{ color: "#fff", textDecoration: "none" }}
+// // //             >
+// // //               Price List
+// // //             </Link>
+// // //           </li>
+// // //         </ul>
+// // //         <button className="btn btn-danger mt-3" onClick={logout}>
+// // //           Logout
+// // //         </button>
+// // //       </aside>
+
+// // //       {/* Main Content */}
+// // //       <main style={{ flex: 1, background: "#f6f9fc", padding: 24 }}>
+// // //         <Outlet />
+// // //       </main>
+// // //     </div>
+// // //   );
+// // // }
+
 // // import React, { useState } from "react";
 // // import { Link, Outlet, useNavigate } from "react-router-dom";
-
-// // // Icons
+// // // ✅ Import only specific icons (no sourcemap warnings)
 // // import {
 // //   Home,
 // //   Users,
@@ -11,7 +88,7 @@
 // //   LogOut,
 // //   Menu,
 // //   X,
-// // } from "react-feather";
+// // } from "react-feather"; // Using react-feather (lightweight, no map warnings)
 
 // // export default function AdminLayout() {
 // //   const navigate = useNavigate();
@@ -20,13 +97,6 @@
 // //   const logout = () => {
 // //     localStorage.clear();
 // //     navigate("/login", { replace: true });
-// //   };
-
-// //   // 👉 Mobile sidebar close function
-// //   const handleMobileClose = () => {
-// //     if (window.innerWidth <= 768) {
-// //       setIsSidebarOpen(false);
-// //     }
 // //   };
 
 // //   return (
@@ -59,7 +129,6 @@
 // //           }}
 // //         >
 // //           <h4 style={{ margin: 0, fontSize: "1.2rem" }}>Broker Admin</h4>
-
 // //           <button
 // //             onClick={() => setIsSidebarOpen(false)}
 // //             style={{
@@ -77,47 +146,27 @@
 
 // //         <ul style={{ listStyle: "none", marginTop: 30, padding: 0 }}>
 // //           <li style={styles.navItem}>
-// //             <Link to="/admin" style={styles.link} onClick={handleMobileClose}>
+// //             <Link to="/admin" style={styles.link}>
 // //               <Home size={18} style={styles.icon} /> Dashboard
 // //             </Link>
 // //           </li>
-
 // //           <li style={styles.navItem}>
-// //             <Link
-// //               to="/admin/users"
-// //               style={styles.link}
-// //               onClick={handleMobileClose}
-// //             >
+// //             <Link to="/admin/users" style={styles.link}>
 // //               <Users size={18} style={styles.icon} /> Users
 // //             </Link>
 // //           </li>
-
 // //           <li style={styles.navItem}>
-// //             <Link
-// //               to="/admin/CategoryManager"
-// //               style={styles.link}
-// //               onClick={handleMobileClose}
-// //             >
+// //             <Link to="/admin/CategoryManager" style={styles.link}>
 // //               <List size={18} style={styles.icon} /> Category List
 // //             </Link>
 // //           </li>
-
 // //           <li style={styles.navItem}>
-// //             <Link
-// //               to="/admin/priceanalytics"
-// //               style={styles.link}
-// //               onClick={handleMobileClose}
-// //             >
+// //             <Link to="/admin/priceanalytics" style={styles.link}>
 // //               <BarChart2 size={18} style={styles.icon} /> Analytics
 // //             </Link>
 // //           </li>
-
 // //           <li style={styles.navItem}>
-// //             <Link
-// //               to="/admin/pricelist"
-// //               style={styles.link}
-// //               onClick={handleMobileClose}
-// //             >
+// //             <Link to="/admin/pricelist" style={styles.link}>
 // //               <DollarSign size={18} style={styles.icon} /> Sub Category
 // //             </Link>
 // //           </li>
@@ -179,11 +228,9 @@
 // //           >
 // //             <Menu size={26} />
 // //           </button>
-
 // //           <h3 style={{ margin: 0, color: "#13385a", fontWeight: 600 }}>
 // //             Admin Dashboard
 // //           </h3>
-
 // //           <div></div>
 // //         </div>
 
@@ -238,8 +285,6 @@
 // //     minWidth: 20,
 // //   },
 // // };
-
-
 
 // import React, { useState } from "react";
 // import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -520,9 +565,6 @@
 //     minWidth: 20,
 //   },
 // };
-
-
-
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
@@ -606,6 +648,18 @@ export default function AdminLayout() {
               <Users size={18} style={styles.icon} /> Users
             </Link>
           </li>
+
+<li style={styles.navItem}>
+            <Link
+              to="/admin/Descriptionmanager"
+              style={styles.link}
+              onClick={() => setIsSidebarOpen(false)}
+            >
+              <List size={18} style={styles.icon} /> Add Description 
+            </Link>
+          </li>
+
+
 
           <li style={styles.navItem}>
             <Link
