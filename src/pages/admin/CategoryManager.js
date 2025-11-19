@@ -906,7 +906,7 @@ const CategoryManager = () => {
 
       <div className="header">
         <h2>📂 Category Manager</h2>
-        // <p>Add categories & subcategories (mobile-friendly)</p>
+        
 
         <input
           className="search-input"
@@ -1246,4 +1246,5 @@ const CategoryManager = () => {
 };
 
 export default CategoryManager;
+
 
