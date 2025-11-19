@@ -611,11 +611,11 @@ export default function Users() {
     <div className="users-container">
       <div className="users-header">
         <h2>👥 User Management</h2>
-        <p>Create • Update • Delete Users</p>
+        
       </div>
 
       {/* Form */}
-      <form className="user-form" onSubmit={handleSubmit}>
+      {/* <form className="user-form" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Name"
@@ -659,7 +659,7 @@ export default function Users() {
             Cancel
           </button>
         )}
-      </form>
+      </form> */}
 
       {/* TABLE WITH SCROLL */}
       {!loading && (
