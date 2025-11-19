@@ -54,27 +54,17 @@
   transition: 0.3s;
 }
 
-.category-form input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0,123,255,0.3);
-}
-
 .category-form button {
   background: #007bff;
   color: white;
   border: none;
   padding: 11px 18px;
   border-radius: 10px;
-  cursor: pointer;
   font-weight: 600;
 }
 
 .cancel-btn {
   background: #adb5bd !important;
-}
-
-.cancel-btn:hover {
-  background: #889098 !important;
 }
 
 /* ---------------------------------------------------
@@ -89,32 +79,6 @@ button:hover {
   transform: translateY(-2px);
 }
 
-.edit-btn {
-  background: #ffc107;
-  color: black;
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: none;
-}
-
-.edit-btn.small {
-  padding: 5px 8px;
-  font-size: 13px;
-}
-
-.delete-btn {
-  background: #dc3545;
-  color: white;
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: none;
-}
-
-.delete-btn.small {
-  padding: 5px 8px;
-  font-size: 13px;
-}
-
 .small-btn {
   background: #13385a;
   color: white;
@@ -123,10 +87,17 @@ button:hover {
 }
 
 /* ---------------------------------------------------
-   DESKTOP TABLE
+   DESKTOP TABLE + MOBILE LIST VIEW
 --------------------------------------------------- */
+.category-list {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 .category-list table {
   width: 100%;
+  min-width: 900px;
   border-collapse: collapse;
   background: #ffffff;
   border-radius: 14px;
@@ -139,6 +110,7 @@ button:hover {
   padding: 14px 12px;
   border-bottom: 1px solid #e8edf3;
   text-align: center;
+  white-space: nowrap;
 }
 
 .category-list th {
@@ -156,65 +128,217 @@ button:hover {
 }
 
 /* ---------------------------------------------------
-   SUBCATEGORY SECTION (DESKTOP)
+   3 DOTS MENU
 --------------------------------------------------- */
-.sub-section {
-  margin-top: 10px;
-  padding: 15px;
-  background: #f8fbff;
-  border: 1px solid #d7e4f7;
-  border-radius: 12px;
+.dots-wrap {
+  position: relative;
 }
 
-.sub-section h4 {
-  margin-bottom: 12px;
-  color: #13385a;
-  font-size: 17px;
+.dots-btn {
+  font-size: 22px;
+  border: none;
+  background: transparent;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 8px;
 }
 
-.sub-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 12px;
-}
-
-.sub-item {
-  background: #ffffff;
-  padding: 10px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #e1e6ef;
-}
-
-.sub-thumb {
-  width: 60px;
-  height: 60px;
+.dots-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 6px);
+  background: #fff;
   border-radius: 10px;
-  object-fit: cover;
-  border: 1px solid #cfd8e3;
+  padding: 6px;
+  min-width: 140px;
+  box-shadow: 0 10px 30px rgba(10,20,40,0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  animation: menuPop .12s ease;
+}
+
+@keyframes menuPop {
+  from {opacity: 0; transform: translateY(-6px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.menu-item {
+  padding: 10px 12px;
+  text-align: left;
+  background: transparent;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.menu-item:hover {
+  background: #f3f7ff;
 }
 
 /* ---------------------------------------------------
-   SUB FORM (DESKTOP + MOBILE)
+   SUBCATEGORY SECTION
 --------------------------------------------------- */
-.sub-form {
-  margin-top: 15px;
-  padding: 14px;
-  background: #eef4ff;
-  border-radius: 10px;
-  border: 1px solid #d3ddf6;
+/* ---------------------------------------------------
+   SUBCATEGORY SECTION - MODERN & COMPACT
+--------------------------------------------------- */
+
+.sub-section {
+  margin-top: 12px;
+  padding: 15px;
+  background: #f9fbff;
+  border: 1px solid #d8e4f7;
+  border-radius: 14px;
 }
 
+/* Heading */
+.sub-section h4 {
+  margin: 0 0 12px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #20446c;
+}
+
+/* List Grid */
+.sub-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 10px;
+}
+
+/* Each sub item card */
+.sub-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e1e6ef;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: 0.2s;
+}
+
+.sub-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.07);
+}
+
+/* Left content with image + name */
+.sub-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Thumbnail */
+.sub-thumb {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid #ccd6e3;
+}
+
+.no-img {
+  background: #e5ecf5;
+  color: #7a8aa0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+}
+
+/* Name text */
+.sub-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #13385a;
+}
+
+/* Dots Action Menu */
+.small-dots {
+  padding: 4px;
+  font-size: 20px;
+  background: transparent;
+  border: none;
+}
+
+/* ---------------------------------------------------
+   SUBCATEGORY FORM - SMALL + CLEAN
+--------------------------------------------------- */
+/* -----------------------------------------------
+   SUB FORM – CLEAN & RESPONSIVE
+----------------------------------------------- */
+.sub-form {
+  margin-top: 14px;
+  padding: 16px;
+  background: #eef4ff;
+  border-radius: 12px;
+  border: 1px solid #d3ddf6;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Inputs */
 .sub-form input[type="text"],
 .sub-form input[type="file"] {
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  border: 1px solid #ccd6e3;
-  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #cbd6e4;
+  border-radius: 10px;
   background: #f8fafc;
+  transition: 0.2s;
+}
+
+/* Hover + focus */
+.sub-form input:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 3px rgba(13,110,253,0.15);
+}
+
+/* Submit Button */
+.sub-form button {
+  align-self: center;
+  width: 240px;
+  padding: 12px;
+  font-size: 15px;
+  background: #083b73;
+  color: white;
+  font-weight: 700;
+  border-radius: 10px;
+  border: none;
+  transition: 0.2s ease;
+}
+
+.sub-form button:hover {
+  transform: translateY(-2px);
+}
+
+/* -----------------------------------------------
+   MOBILE VIEW
+----------------------------------------------- */
+@media (max-width: 768px) {
+
+  .sub-form {
+    padding: 14px;
+    gap: 10px;
+  }
+
+  .sub-form input[type="text"],
+  .sub-form input[type="file"] {
+    padding: 11px 12px;
+    font-size: 14px;
+  }
+
+  .sub-form button {
+    width: 100%; /* mobile full width */
+    padding: 11px;
+    font-size: 15px;
+    border-radius: 8px;
+  }
 }
 
 /* ---------------------------------------------------
@@ -234,286 +358,183 @@ button:hover {
   border-radius: 8px;
 }
 
-.active-page {
-  background: #ffc107 !important;
-  color: #000 !important;
-}
-
 /* ---------------------------------------------------
-   MOBILE CARDS (THE REAL MAGIC)
+   MOBILE (LIST VIEW ONLY)
 --------------------------------------------------- */
-.category-cards {
-  display: none;
-}
-
 @media (max-width: 768px) {
 
-  /* hide desktop table */
+  /* keep TABLE visible on mobile */
   .category-list table {
-    display: none !important;
+    display: table !important;
   }
 
-  /* show card layout */
-  .category-cards {
-    display: grid;
-    gap: 15px;
+  /* allow horizontal scroll */
+  .category-list {
+    overflow-x: auto;
+    padding-bottom: 8px;
   }
 
-  .category-card {
-    background: white;
-    padding: 16px;
-    border-radius: 14px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  .category-list table {
+    min-width: 900px;
   }
 
-  .card-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .index-badge {
-    width: 30px;
-    height: 30px;
-    background: #13385a;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 13px;
-    font-weight: 600;
-  }
-
-  .mobile-img {
-    width: 100%;
-    height: 160px;
-    border-radius: 12px;
-    object-fit: cover;
-    margin: 12px 0;
-  }
-
-  .card-body p {
-    margin: 4px 0;
-    font-size: 15px;
-  }
-
-  /* MOBILE SUB BOX */
-  .sub-mobile-box {
-    background: #f1f6ff;
-    border: 1px solid #d7e4fc;
-    padding: 12px;
-    border-radius: 12px;
-    margin-top: 10px;
-  }
-
-  .sub-mobile-title {
-    font-size: 15px;
-    color: #13385a;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .sub-mobile-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-  }
-
-  .sub-mobile-item:last-child {
-    border-bottom: none;
-  }
-
-  .sub-mobile-item img {
-    width: 55px;
-    height: 55px;
-    border-radius: 10px;
-    object-fit: cover;
-    border: 1px solid #ddd;
-  }
-
-  .submobile-actions {
-    margin-left: auto;
-    display: flex;
-    gap: 6px;
-  }
-
-  .submobile-actions button {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
-
-  /* INPUTS FULL WIDTH ON MOBILE */
+  /* form full width */
   .category-form .form-row {
     flex-direction: column;
-    gap: 12px;
   }
 
-  .category-form input {
+  .category-form input,
+  .category-form button {
     width: 100% !important;
   }
 
-  .category-form button {
-    width: 100%;
-  }
-
-  .sub-form input {
-    width: 100%;
-  }
-
+  .sub-form input,
   .sub-form button {
-    width: 100%;
+    width: 100% !important;
+  }
+
+  /* dots menu reposition */
+  .dots-menu {
+    right: 4px;
   }
 }
-/* ---------- added top search and modal styles ---------- */
-
-/* search + top row */
-.top-row {
-  display: flex;
-  gap: 16px;
-  align-items: flex-start;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.search-input {
-  min-width: 260px;
-  flex: 1;
-  padding: 10px 12px;
-  border-radius: 10px;
-  border: 1px solid #d7dfe9;
-  background: #f8fafc;
-}
-
-/* adjust original .category-form within top-row: keep it compact on desktop */
-.category-form .form-row {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-}
-
-/* Modal overlay & centered card */
+/* ------------------- SMALL MODERN MODAL ------------------- */
 .cm-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 20, 30, 0.45);
+  background: rgba(0, 0, 0, 0.35);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 9999;
-  padding: 20px;
+  align-items: center;
+  z-index: 500;
+  padding: 12px;
+  backdrop-filter: blur(3px);
 }
 
 .cm-modal {
-  width: 520px;
-  max-width: 96%;
+  width: 320px;  /* small size */
   background: #fff;
   border-radius: 14px;
   padding: 20px;
-  box-shadow: 0 10px 35px rgba(10, 30, 60, 0.18);
-  border: 1px solid #e9f0ff;
+  box-shadow: 0 10px 35px rgba(0,0,0,0.12);
+  animation: fadePop 0.18s ease;
+}
+
+@keyframes fadePop {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
 .cm-modal h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 14px 0;
+  font-size: 18px;
+  font-weight: 700;
   color: #13385a;
-  font-size: 20px;
+  text-align: center;
 }
 
-/* modal form */
 .cm-modal-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.cm-modal-form input[type="text"],
-.cm-modal-form input[type="file"] {
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #d7dfe9;
-  background: #fbfdff;
+.modal-label {
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
 }
 
-.modal-label {
-  font-size: 13px;
-  color: #4b5563;
-  margin-top: 6px;
+.cm-modal input[type="text"],
+.cm-modal input[type="file"] {
+  padding: 10px 12px;
+  border: 1px solid #ccd6e0;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 14px;
 }
 
 .modal-preview {
-  margin-top: 8px;
-  display: flex;
-  justify-content: center;
+  width: 85px;
+  height: 85px;
+  margin: 8px auto;
+  border-radius: 10px;
+  border: 1px solid #d9e2ec;
+  overflow: hidden;
 }
 
 .modal-preview img {
-  width: 140px;
-  height: 100px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
-  border: 1px solid #e3e8ef;
 }
 
-/* modal buttons */
 .modal-actions {
   display: flex;
+  justify-content: space-between;
   gap: 10px;
-  justify-content: flex-end;
-  margin-top: 8px;
+  margin-top: 10px;
 }
 
 .btn-primary {
-  background: #13385a;
+  flex: 1;
+  padding: 9px 12px;
+  background: #0d6efd;
   color: #fff;
   border: none;
-  padding: 9px 14px;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 600;
 }
 
 .btn-cancel {
-  background: #e6eefc;
-  color: #13385a;
+  flex: 1;
+  padding: 9px 12px;
+  background: #adb5bd;
+  color: #fff;
   border: none;
-  padding: 9px 14px;
   border-radius: 8px;
-  cursor: pointer;
   font-weight: 600;
 }
-
-/* small improvements for sub thumb placeholder */
-.sub-thumb.no-img,
-.no-thumb-mobile {
-  width: 60px;
-  height: 60px;
+.add-cat-btn {
+  background: #0d6efd;
+  color: white;
+  padding: 12px 18px;
+  font-size: 16px;
   border-radius: 10px;
-  background: #f1f3f6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #98a0ab;
+  border: none;
+  font-weight: 600;
+  margin-bottom: 20px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-/* responsive tweaks (modal full width on mobile) */
-@media (max-width: 520px) {
-  .cm-modal {
-    width: 100%;
-    height: auto;
-    max-height: 92vh;
-    overflow: auto;
-    padding: 16px;
-  }
+.add-cat-btn:hover {
+  background: #084298;
+  transform: translateY(-2px);
+}
+.catlist-search-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px; /* GAP for search bar */
+}
+/* SEARCH BAR */
+.catlist-search-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25px;   /* 👈 GAP ADDED */
+}
 
-  .modal-actions {
-    flex-direction: column-reverse;
-    gap: 8px;
-  }
-
-  .top-row {
-    flex-direction: column;
-  }
+/* ADD CATEGORY BUTTON */
+.add-cat-btn {
+  background: #0d6efd;
+  color: white;
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  margin-top: 10px;      /* 👈 Search bar se neeche */
+  margin-bottom: 20px;   /* 👈 Table se gap */
+  cursor: pointer;
+  transition: 0.2s;
 }
