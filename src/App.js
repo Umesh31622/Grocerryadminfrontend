@@ -14,6 +14,7 @@ import CategoryManager from "./pages/admin/CategoryManager";
 import PriceAnalytics from "./pages/admin/PriceAnalytics";
 import ProductList from "./pages/admin/ProductList";
 import CategoryList from "./pages/admin/CategoryList";
+import DescriptionManager from "./pages/admin/DescriptionManager";
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem("token");
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="productlist" element={<ProductList />} />
           <Route path="priceanalytics" element={<PriceAnalytics />} />
           <Route path="categorylist" element={<CategoryList />} />
+          <Route path="descriptionmanager" element={<DescriptionManager />} />
         </Route>
       </Routes>
     </BrowserRouter>
