@@ -6,7 +6,7 @@ const API = "https://grocerrybackend.vercel.app/api/descriptions";
 export default function DescriptionManager() {
   const [items, setItems] = useState([]);
   const [form, setForm] = useState({ title: "", description: "" });
-  const [editId, setEditId] = useState(null);
+  const [editId, setEditId] = useState(null); 
   const [showForm, setShowForm] = useState(false);
 
   // Modal
