@@ -356,8 +356,8 @@ function ProductList() {
   return (
     <div className="price-container">
       <div className="header-section">
-        <h1>📦 Product List</h1>
-        <p>View all products with sorting, search & category filters.</p>
+        <h1> Product List</h1>
+        
       </div>
 
       <div className="filter-bar">
@@ -405,7 +405,7 @@ function ProductList() {
 
       <div className="table-card">
         <div className="table-header">
-          <h2>📋 Items</h2>
+          <h2> Items</h2>
           <span>Total: {filteredItems.length}</span>
         </div>
 
