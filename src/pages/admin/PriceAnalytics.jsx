@@ -560,7 +560,7 @@ const PriceAnalytics = () => {
 
   return (
     <div className="analytics-container">
-      <h2 className="analytics-title">📈 Price Analytics</h2>
+      <h2 className="analytics-title">Price Analytics</h2>
 
       <div className="filter-section">
         
@@ -597,7 +597,7 @@ const PriceAnalytics = () => {
           </>
         )}
 
-        <button className="btn refresh" onClick={fetchChart}>Apply</button>
+        {/* <button className="btn refresh" onClick={fetchChart}>Apply</button> */}
       </div>
 
       <div className="chart-wrapper">
