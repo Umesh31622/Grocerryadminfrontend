@@ -610,7 +610,7 @@ export default function Users() {
   return (
     <div className="users-container">
       <div className="users-header">
-        <h2>👥 User Management</h2>
+        <h2> User Management</h2>
         
       </div>
 
