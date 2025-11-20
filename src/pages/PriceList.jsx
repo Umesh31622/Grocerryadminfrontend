@@ -945,7 +945,7 @@
 // }
 import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
-
+import "./PriceList.css"
 const API_URL = "https://grocerrybackend.vercel.app/api/prices";
 const CATEGORY_URL = "https://grocerrybackend.vercel.app/api/categories";
 
@@ -1466,45 +1466,47 @@ const handleExportCsv = () => {
     <div style={styles.container}>
       {/* HEADER */}
       <div style={styles.header}>
-        <h1 style={styles.title}>💰 Product Management</h1>
-        <p style={styles.subtitle}>Manage prices, categories, images, CSV & bulk actions.</p>
+        <h1 style={styles.title}>Product Management</h1>
+        {/* <p style={styles.subtitle}>Manage prices, categories, images, CSV & bulk actions.</p> */}
       </div>
 
       {/* SEARCH */}
-      <div style={styles.searchBar}>
-        <input
-          type="text"
-          placeholder="Search product, category or subcategory..."
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setCurrentPage(1);
-          }}
-          style={styles.searchInput}
-        />
-      </div>
+     <div className="mobile-topbar">
+  <input
+    type="text"
+    placeholder="Search product, category or subcategory..."
+    value={search}
+    onChange={(e) => {
+      setSearch(e.target.value);
+      setCurrentPage(1);
+    }}
+    style={styles.searchInput}
+  />
 
-      {/* ADD PRODUCT BUTTON */}
-      <div style={styles.addButtonWrapper}>
-        <button
-          style={styles.addButton}
-          onClick={() => {
-            setShowForm(!showForm);
-            setEditId(null);
-            setIsCopyMode(false);
-          }}
-        >
-          {showForm ? "✖ Close Form" : "➕ Add Product"}
-        </button>
-      </div>
+  <button
+    style={styles.addButton}
+    onClick={() => {
+      setShowForm(!showForm);
+      setEditId(null);
+      setIsCopyMode(false);
+    }}
+  >
+    {showForm ? "✖" : "Add Product"}
+  </button>
+</div>
+
 
       {/* BULK BAR */}
       {selectedItems.length > 0 && (
-        <div style={styles.bulkBar}>
-          <span style={styles.bulkText}>{selectedItems.length} selected</span>
+        // <div style={styles.bulkBar}>
+        <div className="bulk-bar">
+
+          {/* <span style={styles.bulkText}>{selectedItems.length} selected</span> */}
 
           {!bulkMode ? (
-            <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            // <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+            <div className="bulk-actions">
+
               <button style={styles.btnDelete} onClick={handleBulkDelete}>
                 🗑 Bulk Delete
               </button>
@@ -1513,9 +1515,9 @@ const handleExportCsv = () => {
                 ✏ Bulk Edit
               </button>
 
-              <button style={styles.btnSmall} onClick={handleExportSelectedCsv}>
+              {/* <button style={styles.btnSmall} onClick={handleExportSelectedCsv}>
                 ⤓ Export Selected
-              </button>
+              </button> */}
             </div>
           ) : (
             <div style={styles.bulkPanel}>
@@ -1607,7 +1609,7 @@ const handleExportCsv = () => {
                   </div>
                 ))}
 
-              <div style={{ display: "flex", gap: 10, marginTop: 12 }}>
+              <div style={{ display: "flex", gap: 0, marginTop: 12 }}>
                 <button style={styles.btnPrimary} onClick={handleBulkSave}>
                   ✔ Save All
                 </button>
@@ -1623,7 +1625,9 @@ const handleExportCsv = () => {
       {/* FORM */}
       {showForm && (
         <div style={styles.formCard}>
-          <h2 style={styles.formTitle}>➕ Add Product</h2>
+          <h2 style={styles.formTitle}>➕ Add 
+            
+          </h2>
 
           <form onSubmit={handleSubmit}>
             <div style={styles.formGrid}>
@@ -1764,7 +1768,7 @@ const handleExportCsv = () => {
       )}
 
       {/* CSV CONTROLS */}
-      <div style={styles.csvControls}>
+      {/* <div style={styles.csvControls}>
         <div>
           <input type="file" accept=".csv" ref={csvInputRef} onChange={handleCsvSelect} style={styles.fileInput} />
           <button style={styles.btnSmall} onClick={handleImportCsv}>
@@ -1781,12 +1785,35 @@ const handleExportCsv = () => {
             Export Selected CSV
           </button>
         </div>
-      </div>
+      </div> */}
+<div className="csv-topbar">
+  <div className="csv-row">
+    <input
+      type="file"
+      accept=".csv"
+      ref={csvInputRef}
+      onChange={handleCsvSelect}
+      style={styles.fileInput}
+    />
+
+    <button style={styles.btnSmall} onClick={handleImportCsv}>
+      Import
+    </button>
+
+    <button style={styles.btnPrimary} onClick={handleExportCsv}>
+      Export All
+    </button>
+
+    <button style={styles.btnSmall} onClick={handleExportSelectedCsv}>
+       Selected 
+    </button>
+  </div>
+</div>
 
       {/* TABLE */}
       <div style={styles.tableCard}>
         <div style={styles.tableHeader}>
-          <h2 style={styles.tableTitle}>📋 Items</h2>
+          <h2 style={styles.tableTitle}> Items</h2>
           <span style={styles.totalCount}>Total: {filteredItems.length}</span>
         </div>
 
@@ -1842,6 +1869,8 @@ const handleExportCsv = () => {
                   <td style={styles.td}>₹{item.basePrice}</td>
                   <td style={styles.td}>{item.difference || 0}</td>
                   <td style={styles.td}>₹{Number(item.basePrice) + Number(item.difference || 0)}</td>
+
+                  
 
                   <td style={styles.td}>
                     <button
@@ -1910,7 +1939,7 @@ const handleExportCsv = () => {
       {showModal && (
         <div style={styles.modalOverlay} onClick={() => setShowModal(false)}>
           <div style={styles.modal} onClick={(e) => e.stopPropagation()}>
-            <h2 style={styles.modalTitle}>{isCopyMode ? "📄 Copy Product" : "✏ Edit Product"}</h2>
+            <h2 style={styles.modalTitle}>{isCopyMode ? " Copy Product" : " Edit Product"}</h2>
 
             <form onSubmit={handleSubmit}>
               <div style={styles.formGrid}>
@@ -2015,28 +2044,22 @@ const handleExportCsv = () => {
 
 const styles = {
   container: {
-    maxWidth: "1250px",
-    margin: "auto",
-    padding: "25px",
-    fontFamily: "'Inter', sans-serif",
-    color: "#1d3557",
+
   },
   header: {
-    textAlign: "center",
-    marginBottom: "35px",
+  
   },
   title: {
-    fontSize: "30px",
+    fontSize: "21px",
     fontWeight: "700",
     color: "#0d3b66",
     marginBottom: "6px",
   },
   subtitle: {
-    color: "#6c757d",
-    fontSize: "16px",
+   fontSize: "16px",
   },
   searchBar: {
-    maxWidth: "480px",
+    maxWidth: "320px",
     margin: "0 auto 25px auto",
   },
   searchInput: {
@@ -2050,7 +2073,7 @@ const styles = {
     boxShadow: "0 2px 6px rgba(0, 0, 0, 0.06)",
   },
   addButtonWrapper: {
-    textAlign: "center",
+    textAlign: "left",
     marginBottom: "25px",
   },
   addButton: {
@@ -2204,7 +2227,7 @@ const styles = {
     border: "none",
     borderRadius: "10px",
     padding: "9px 16px",
-    fontWeight: "600",
+
     cursor: "pointer",
     transition: "0.25s ease",
   },
@@ -2251,11 +2274,10 @@ const styles = {
     gap: "12px",
   },
   tableCard: {
-    background: "#fff",
-    borderRadius: "14px",
-    padding: "20px",
-    boxShadow: "0 4px 18px rgba(0, 0, 0, 0.08)",
-    border: "1px solid #eef2f7",
+
+
+
+
   },
   tableHeader: {
     display: "flex",
@@ -2421,4 +2443,6 @@ const styles = {
     marginBottom: "20px",
     textAlign: "center",
   },
+  
+  
 }
