@@ -1,14 +1,12 @@
 .catlist-container {
-  max-width: 900px;
-  margin: 35px auto;
-  padding: 20px;
+ 
   font-family: "Inter", sans-serif;
 }
 
 /* Search Bar */
 .catlist-search-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: left;
   margin-bottom: 22px;
 }
 
@@ -47,20 +45,21 @@
 .catlist-table th {
   text-align: left;
   padding: 10px;
-  background: #f0f6ff;
+  
   font-size: 14px;
   font-weight: 600;
-  border-bottom: 2px solid #dfe7f3;
+  
 }
 
 .catlist-table td {
   padding: 12px;
   font-size: 15px;
-  border-bottom: 1px solid #eef2f7;
+  
+  text-align: left !important;
 }
 
 .catlist-table tr:hover {
-  background: #f7faff;
+
 }
 
 /* Smaller Image */
@@ -76,7 +75,7 @@
 .no-data {
   padding: 20px;
   text-align: center;
-  color: #777;
+  
 }
 
 /* Mobile Adjustments */
@@ -88,5 +87,77 @@
   .catlist-img {
     width: 40px;
     height: 40px;
+  }
+}
+/* ----------- SUPER COMPACT MOBILE VIEW ----------- */
+@media (max-width: 768px) {
+
+  /* table width tighter */
+  .catlist-table {
+    min-width: 300px !important;
+  }
+
+  /* header compact */
+  .catlist-table th {
+    padding: 4px 3px !important;
+    font-size: 11px !important;
+  }
+
+  /* rows compact */
+  .catlist-table td {
+    padding: 4px 3px !important;
+    font-size: 12px !important;
+  }
+
+  /* image very small */
+  .catlist-img {
+    width: 30px !important;
+    height: 30px !important;
+    border-radius: 6px !important;
+  }
+
+  /* reduce row hover */
+  .catlist-table tr:hover {
+    background: transparent !important;
+  }
+}
+/* ----------- FIX: DATA LEFT ALIGN + NO RIGHT SHIFT ----------- */
+@media (max-width: 768px) {
+
+  /* Table stays aligned left (no auto spacing) */
+  .catlist-table {
+    min-width: 140% !important;
+    margin: 0 !important;
+  }
+
+  /* All rows + cols left aligned */
+  .catlist-table th,
+  .catlist-table td {
+    text-align: left !important;
+  }
+
+  /* Compact spacing */
+  .catlist-table th {
+    padding: 14px 6px !important;
+    font-size: 11px !important;
+    text-align: left !important;
+  }
+
+  .catlist-table td {
+    padding: 24px 6px !important;
+    font-size: 12px !important;
+    text-align: left !important;
+  }
+
+  /* Image smaller & aligned */
+  .catlist-img {
+    width: 28px !important;
+    height: 28px !important;
+    border-radius: 6px !important;
+  }
+
+  /* Prevent unwanted right-side scroll */
+  .catlist-table-wrapper {
+    overflow-x: hidden !important;
   }
 }
