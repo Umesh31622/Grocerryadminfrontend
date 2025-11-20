@@ -1,19 +1,57 @@
+/* -------- FILTER ROW ALWAYS SAME LINE -------- */
+.filter-section {
+  display: flex;
+  flex-wrap: nowrap !important;     /* NEVER wrap */
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Dropdown Styling */
+.filter-section select,
+.filter-section input[type="date"] {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfd8e3;
+  background: #ffffff;
+  font-size: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 160px;
+}
+
+/* -------- MOBILE VIEW (3 FILTERS EXACT 1 ROW) -------- */
+@media (max-width: 768px) {
+  .filter-section {
+    flex-wrap: nowrap !important;  
+    overflow-x: auto !important;   /* mobile horizontal scroll if required */
+    gap: 10px;
+  }
+
+  .filter-section select,
+  .filter-section input[type="date"] {
+    width: 150px !important;
+  }
+}
+
+
 .analytics-container {
   max-width: 1200px;
-  margin: 30px auto;
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-  padding: 25px;
+ text-align: left;
   font-family: "Inter", sans-serif;
 }
 
 .analytics-title {
-  font-size: 28px;
+  font-size: 21px;
   font-weight: 700;
+  text-align: left;
   color: #1d3557;
   text-align: center;
   margin-bottom: 5px;
+}
+.analytics-container h2{
+  text-align: left;
 }
 
 .analytics-subtitle {
@@ -22,14 +60,7 @@
   margin-bottom: 25px;
 }
 
-.filter-section {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 25px;
-}
+
 
 .filter-group {
   display: flex;
@@ -80,11 +111,52 @@
   color: #6c757d;
   margin-top: 50px;
 }
+/* -------- FILTER ROW ALWAYS SAME LINE -------- */
+.filter-section {
+  display: flex;
+  flex-wrap: nowrap !important;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Normal desktop size */
+.filter-section select,
+.filter-section input[type="date"] {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid #cfd8e3;
+  background: #ffffff;
+  font-size: 14px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  width: 150px;   /* desktop perfect */
+}
+
+/* -------- MOBILE VIEW (compact width) -------- */
+@media (max-width: 768px) {
+  .filter-section {
+    flex-wrap: nowrap !important;
+    flex-direction: row !important;
+    overflow-x: auto !important;
+    gap: 8px;
+  }
+
+  /* 👇 Choti width for perfect one-line */
+  .filter-section select,
+  .filter-section input[type="date"] {
+    width: 105px !important;    /* ★ PERFECT mobile width */
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
   .filter-section {
-    flex-direction: column;
+    flex-direction: row;
     align-items: stretch;
   }
 
