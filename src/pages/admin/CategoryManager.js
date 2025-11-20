@@ -1,3 +1,5 @@
+
+
 // import React, { useState, useEffect, useRef } from "react";
 // import axios from "axios";
 // import { toast, ToastContainer } from "react-toastify";
@@ -905,10 +907,10 @@ const CategoryManager = () => {
       <ToastContainer />
 
       <div className="header">
-        <h2>📂 Category Manager</h2>
-        
+        <h2> Category Manager</h2>
+        {/* <p>Add categories & subcategories (mobile-friendly)</p> */}
 
-        <input
+        {/* <input
           className="search-input"
           placeholder="Search..."
           value={searchText}
@@ -917,13 +919,51 @@ const CategoryManager = () => {
             setCurrentPage(1);
           }}
         />
-<br></br>
+
         <button
           className="add-cat-btn"
           onClick={() => setShowCatForm(!showCatForm)}
         >
           {showCatForm ? "Close" : "Add Category"}
-        </button>
+        </button> */}
+{/* 
+        <div className="header-row">
+  <input
+    className="search-input"
+    placeholder="Search..."
+    value={searchText}
+    onChange={(e) => {
+      setSearchText(e.target.value);
+      setCurrentPage(1);
+    }}
+  />
+
+  <button
+    className="add-cat-btn"
+    onClick={() => setShowCatForm(!showCatForm)}
+  >
+    {showCatForm ? "Close" : "Add Category"}
+  </button>
+</div> */}
+<div className="header-row-fixed">
+  <input
+    className="search-input-fixed"
+    placeholder="Search..."
+    value={searchText}
+    onChange={(e) => {
+      setSearchText(e.target.value);
+      setCurrentPage(1);
+    }}
+  />
+
+  <button
+    className="add-cat-btn-fixed"
+    onClick={() => setShowCatForm(!showCatForm)}
+  >
+    {showCatForm ? "Close" : "Add Category"}
+  </button>
+</div>
+
       </div>
 
       {/* CATEGORY FORM TOGGLE */}
@@ -1246,5 +1286,3 @@ const CategoryManager = () => {
 };
 
 export default CategoryManager;
-
-
