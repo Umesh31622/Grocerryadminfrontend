@@ -1,84 +1,8 @@
-// // // import React from "react";
-// // // import { Link, Outlet, useNavigate } from "react-router-dom";
-
-// // // export default function AdminLayout() {
-// // //   const navigate = useNavigate();
-
-// // //   const logout = () => {
-// // //     localStorage.clear();
-// // //     navigate("/login", { replace: true });
-// // //   };
-
-// // //   return (
-// // //     <div style={{ display: "flex", minHeight: "100vh" }}>
-// // //       {/* Sidebar */}
-// // //       <aside
-// // //         style={{
-// // //           width: 240,
-// // //           background: "#13385a",
-// // //           color: "#fff",
-// // //           padding: 24,
-// // //         }}
-// // //       >
-// // //         <h4>Broker Admin</h4>
-// // //         <ul className="list-unstyled mt-4">
-// // //           <li className="py-2">
-// // //             <Link to="/admin" style={{ color: "#fff", textDecoration: "none" }}>
-// // //               Dashboard
-// // //             </Link>
-// // //           </li>
-// // //           <li className="py-2">
-// // //             <Link
-// // //               to="/admin/users"
-// // //               style={{ color: "#fff", textDecoration: "none" }}
-// // //             >
-// // //               Users
-// // //             </Link>
-// // //           </li>
-// // //           <li className="py-2">
-// // //             <Link
-// // //               to="/admin/CategoryManager"
-// // //               style={{ color: "#fff", textDecoration: "none" }}
-// // //             >
-// // //               Category List
-// // //             </Link>
-// // //           </li>
-        
-          
-// // //           <li className="py-2">
-// // //             <Link
-// // //               to="/admin/priceanalytics"
-// // //               style={{ color: "#fff", textDecoration: "none" }}
-// // //             >
-// // //               Analytics
-// // //             </Link>
-// // //           </li>
-          
-// // //           <li className="py-2">
-// // //             <Link
-// // //               to="/admin/pricelist"
-// // //               style={{ color: "#fff", textDecoration: "none" }}
-// // //             >
-// // //               Price List
-// // //             </Link>
-// // //           </li>
-// // //         </ul>
-// // //         <button className="btn btn-danger mt-3" onClick={logout}>
-// // //           Logout
-// // //         </button>
-// // //       </aside>
-
-// // //       {/* Main Content */}
-// // //       <main style={{ flex: 1, background: "#f6f9fc", padding: 24 }}>
-// // //         <Outlet />
-// // //       </main>
-// // //     </div>
-// // //   );
-// // // }
 
 // // import React, { useState } from "react";
 // // import { Link, Outlet, useNavigate } from "react-router-dom";
-// // // ✅ Import only specific icons (no sourcemap warnings)
+
+// // // Icons
 // // import {
 // //   Home,
 // //   Users,
@@ -88,7 +12,7 @@
 // //   LogOut,
 // //   Menu,
 // //   X,
-// // } from "react-feather"; // Using react-feather (lightweight, no map warnings)
+// // } from "react-feather";
 
 // // export default function AdminLayout() {
 // //   const navigate = useNavigate();
@@ -97,6 +21,13 @@
 // //   const logout = () => {
 // //     localStorage.clear();
 // //     navigate("/login", { replace: true });
+// //   };
+
+// //   // 👉 Mobile sidebar close function
+// //   const handleMobileClose = () => {
+// //     if (window.innerWidth <= 768) {
+// //       setIsSidebarOpen(false);
+// //     }
 // //   };
 
 // //   return (
@@ -129,6 +60,7 @@
 // //           }}
 // //         >
 // //           <h4 style={{ margin: 0, fontSize: "1.2rem" }}>Broker Admin</h4>
+
 // //           <button
 // //             onClick={() => setIsSidebarOpen(false)}
 // //             style={{
@@ -145,30 +77,89 @@
 // //         </div>
 
 // //         <ul style={{ listStyle: "none", marginTop: 30, padding: 0 }}>
-// //           <li style={styles.navItem}>
-// //             <Link to="/admin" style={styles.link}>
+// //           {/* <li style={styles.navItem}>
+// //             <Link to="/admin" style={styles.link} onClick={handleMobileClose}>
 // //               <Home size={18} style={styles.icon} /> Dashboard
 // //             </Link>
-// //           </li>
+// //           </li> */}
+
 // //           <li style={styles.navItem}>
-// //             <Link to="/admin/users" style={styles.link}>
+// //             <Link
+// //               to="/admin/users"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
 // //               <Users size={18} style={styles.icon} /> Users
 // //             </Link>
 // //           </li>
+// //            {/* <li style={styles.navItem}>
+// //             <Link
+// //               to="/admin/users"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
+// //               <Users size={18} style={styles.icon} /> Category List
+// //             </Link>
+// //           </li> */}
+
 // //           <li style={styles.navItem}>
-// //             <Link to="/admin/CategoryManager" style={styles.link}>
-// //               <List size={18} style={styles.icon} /> Category List
+// //             <Link
+// //               to="/admin/CategoryManager"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
+// //               <List size={18} style={styles.icon} /> Add Category
 // //             </Link>
 // //           </li>
+
+
+// // <li style={styles.navItem}>
+// //             <Link
+// //               to="/admin/categorylist"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
+// //               <List size={18} style={styles.icon} />  Category List
+// //             </Link>
+// //           </li>
+
+
+
+
+
+
+
+
+
+
+
 // //           <li style={styles.navItem}>
-// //             <Link to="/admin/priceanalytics" style={styles.link}>
+// //             <Link
+// //               to="/admin/priceanalytics"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
 // //               <BarChart2 size={18} style={styles.icon} /> Analytics
 // //             </Link>
 // //           </li>
+
 // //           <li style={styles.navItem}>
-// //             <Link to="/admin/pricelist" style={styles.link}>
-// //               <DollarSign size={18} style={styles.icon} /> Sub Category
-// //             </Link>
+// //             <Link
+// //               to="/admin/pricelist"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
+// //               <DollarSign size={18} style={styles.icon} /> Add Product
+// //                           </Link>
+// //           </li>
+// //           <li style={styles.navItem}>
+// //             <Link
+// //               to="/admin/productlist"
+// //               style={styles.link}
+// //               onClick={handleMobileClose}
+// //             >
+// //               <DollarSign size={18} style={styles.icon} /> Product List
+// //                           </Link>
 // //           </li>
 // //         </ul>
 
@@ -228,9 +219,11 @@
 // //           >
 // //             <Menu size={26} />
 // //           </button>
+
 // //           <h3 style={{ margin: 0, color: "#13385a", fontWeight: 600 }}>
 // //             Admin Dashboard
 // //           </h3>
+
 // //           <div></div>
 // //         </div>
 
@@ -285,11 +278,8 @@
 // //     minWidth: 20,
 // //   },
 // // };
-
 // import React, { useState } from "react";
 // import { Link, Outlet, useNavigate } from "react-router-dom";
-
-// // Icons
 // import {
 //   Home,
 //   Users,
@@ -303,51 +293,53 @@
 
 // export default function AdminLayout() {
 //   const navigate = useNavigate();
-//   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+//   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
 //   const logout = () => {
 //     localStorage.clear();
 //     navigate("/login", { replace: true });
 //   };
 
-//   // 👉 Mobile sidebar close function
-//   const handleMobileClose = () => {
-//     if (window.innerWidth <= 768) {
-//       setIsSidebarOpen(false);
-//     }
-//   };
-
 //   return (
-//     <div
-//       style={{
-//         display: "flex",
-//         minHeight: "100vh",
-//         backgroundColor: "#f6f9fc",
-//       }}
-//     >
-//       {/* Sidebar */}
+//     <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#f6f9fc" }}>
+      
+//       {/* ======== MOBILE OVERLAY BACKDROP ======== */}
+//       {isSidebarOpen && (
+//         <div
+//           onClick={() => setIsSidebarOpen(false)}
+//           style={{
+//             position: "fixed",
+//             top: 0,
+//             left: 0,
+//             width: "100%",
+//             height: "100vh",
+//             background: "rgba(0,0,0,0.45)",
+//             zIndex: 90,
+//           }}
+//         ></div>
+//       )}
+
+//       {/* ======== SIDEBAR ======== */}
 //       <aside
 //         style={{
-//           width: isSidebarOpen ? 240 : 0,
+//           width: 240,
 //           background: "#13385a",
 //           color: "#fff",
-//           padding: isSidebarOpen ? "24px" : 0,
+//           padding: "24px",
 //           transition: "all 0.3s ease-in-out",
-//           overflow: "hidden",
 //           position: "fixed",
+//           top: 0,
+//           left: 0,
 //           height: "100vh",
 //           zIndex: 100,
+//           transform: isSidebarOpen ? "translateX(0)" : "translateX(-100%)",
 //         }}
 //       >
-//         <div
-//           style={{
-//             display: "flex",
-//             justifyContent: "space-between",
-//             alignItems: "center",
-//           }}
-//         >
+//         {/* HEADER LOGO + CLOSE BUTTON */}
+//         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 //           <h4 style={{ margin: 0, fontSize: "1.2rem" }}>Broker Admin</h4>
 
+//           {/* MOBILE CLOSE BTN */}
 //           <button
 //             onClick={() => setIsSidebarOpen(false)}
 //             style={{
@@ -355,7 +347,7 @@
 //               border: "none",
 //               color: "#fff",
 //               cursor: "pointer",
-//               display: "none",
+//               display: "block",
 //             }}
 //             className="close-btn"
 //           >
@@ -364,67 +356,49 @@
 //         </div>
 
 //         <ul style={{ listStyle: "none", marginTop: 30, padding: 0 }}>
-//           {/* <li style={styles.navItem}>
-//             <Link to="/admin" style={styles.link} onClick={handleMobileClose}>
-//               <Home size={18} style={styles.icon} /> Dashboard
-//             </Link>
-//           </li> */}
-
 //           <li style={styles.navItem}>
-//             <Link
-//               to="/admin/users"
-//               style={styles.link}
-//               onClick={handleMobileClose}
-//             >
+//             <Link to="/admin/users" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
 //               <Users size={18} style={styles.icon} /> Users
 //             </Link>
 //           </li>
-//            {/* <li style={styles.navItem}>
+
+// <li style={styles.navItem}>
 //             <Link
-//               to="/admin/users"
+//               to="/admin/Descriptionmanager"
 //               style={styles.link}
-//               onClick={handleMobileClose}
+//               onClick={() => setIsSidebarOpen(false)}
 //             >
-//               <Users size={18} style={styles.icon} /> Category List
+//               <List size={18} style={styles.icon} /> Add Description 
 //             </Link>
-//           </li> */}
+//           </li>
+
+
 
 //           <li style={styles.navItem}>
 //             <Link
 //               to="/admin/CategoryManager"
 //               style={styles.link}
-//               onClick={handleMobileClose}
+//               onClick={() => setIsSidebarOpen(false)}
 //             >
 //               <List size={18} style={styles.icon} /> Add Category
 //             </Link>
 //           </li>
 
-
-// <li style={styles.navItem}>
+//           <li style={styles.navItem}>
 //             <Link
 //               to="/admin/categorylist"
 //               style={styles.link}
-//               onClick={handleMobileClose}
+//               onClick={() => setIsSidebarOpen(false)}
 //             >
-//               <List size={18} style={styles.icon} />  Category List
+//               <List size={18} style={styles.icon} /> Category List
 //             </Link>
 //           </li>
-
-
-
-
-
-
-
-
-
-
 
 //           <li style={styles.navItem}>
 //             <Link
 //               to="/admin/priceanalytics"
 //               style={styles.link}
-//               onClick={handleMobileClose}
+//               onClick={() => setIsSidebarOpen(false)}
 //             >
 //               <BarChart2 size={18} style={styles.icon} /> Analytics
 //             </Link>
@@ -434,19 +408,20 @@
 //             <Link
 //               to="/admin/pricelist"
 //               style={styles.link}
-//               onClick={handleMobileClose}
+//               onClick={() => setIsSidebarOpen(false)}
 //             >
 //               <DollarSign size={18} style={styles.icon} /> Add Product
-//                           </Link>
+//             </Link>
 //           </li>
+
 //           <li style={styles.navItem}>
 //             <Link
 //               to="/admin/productlist"
 //               style={styles.link}
-//               onClick={handleMobileClose}
+//               onClick={() => setIsSidebarOpen(false)}
 //             >
 //               <DollarSign size={18} style={styles.icon} /> Product List
-//                           </Link>
+//             </Link>
 //           </li>
 //         </ul>
 
@@ -472,16 +447,15 @@
 //         </button>
 //       </aside>
 
-//       {/* Main Content */}
+//       {/* ======== MAIN CONTENT ======== */}
 //       <main
 //         style={{
 //           flex: 1,
-//           marginLeft: isSidebarOpen ? 240 : 0,
-//           transition: "margin 0.3s ease-in-out",
 //           width: "100%",
+//           marginLeft: 0,
 //         }}
 //       >
-//         {/* Top Bar */}
+//         {/* TOP BAR */}
 //         <div
 //           style={{
 //             background: "#fff",
@@ -492,11 +466,12 @@
 //             justifyContent: "space-between",
 //             position: "sticky",
 //             top: 0,
-//             zIndex: 99,
+//             zIndex: 50,
 //           }}
 //         >
+//           {/* HAMBURGER BTN MOBILE */}
 //           <button
-//             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+//             onClick={() => setIsSidebarOpen(true)}
 //             style={{
 //               background: "transparent",
 //               border: "none",
@@ -507,9 +482,7 @@
 //             <Menu size={26} />
 //           </button>
 
-//           <h3 style={{ margin: 0, color: "#13385a", fontWeight: 600 }}>
-//             Admin Dashboard
-//           </h3>
+//           <h3 style={{ margin: 0, color: "#13385a", fontWeight: 600 }}>Admin Dashboard</h3>
 
 //           <div></div>
 //         </div>
@@ -519,27 +492,21 @@
 //         </div>
 //       </main>
 
-//       {/* Responsive CSS */}
+//       {/* CSS RESPONSIVE */}
 //       <style>
 //         {`
-//           @media (max-width: 768px) {
+//           @media (min-width: 768px) {
 //             aside {
-//               position: fixed;
-//               top: 0;
-//               left: 0;
-//               height: 100vh;
-//               width: 220px;
-//               transform: translateX(${isSidebarOpen ? "0" : "-100%"});
-//               transition: transform 0.3s ease-in-out;
-//             }
-
-//             main {
-//               margin-left: 0 !important;
-//               width: 100%;
+//               transform: translateX(0) !important;
+//               width: 240px !important;
 //             }
 
 //             .close-btn {
-//               display: inline-block !important;
+//               display: none !important;
+//             }
+
+//             main {
+//               margin-left: 240px !important;
 //             }
 //           }
 //         `}
@@ -565,10 +532,10 @@
 //     minWidth: 20,
 //   },
 // };
+
 import React, { useState } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import {
-  Home,
   Users,
   List,
   BarChart2,
@@ -580,7 +547,7 @@ import {
 
 export default function AdminLayout() {
   const navigate = useNavigate();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true); // Desktop default OPEN
 
   const logout = () => {
     localStorage.clear();
@@ -589,10 +556,11 @@ export default function AdminLayout() {
 
   return (
     <div style={{ display: "flex", minHeight: "100vh", backgroundColor: "#f6f9fc" }}>
-      
-      {/* ======== MOBILE OVERLAY BACKDROP ======== */}
+
+      {/* BACKDROP — Visible only when sidebar open on mobile */}
       {isSidebarOpen && (
         <div
+          className="backdrop"
           onClick={() => setIsSidebarOpen(false)}
           style={{
             position: "fixed",
@@ -602,8 +570,9 @@ export default function AdminLayout() {
             height: "100vh",
             background: "rgba(0,0,0,0.45)",
             zIndex: 90,
+            display: window.innerWidth < 768 ? "block" : "none",
           }}
-        ></div>
+        />
       )}
 
       {/* ======== SIDEBAR ======== */}
@@ -613,7 +582,7 @@ export default function AdminLayout() {
           background: "#13385a",
           color: "#fff",
           padding: "24px",
-          transition: "all 0.3s ease-in-out",
+          transition: "all 0.3s ease",
           position: "fixed",
           top: 0,
           left: 0,
@@ -622,11 +591,10 @@ export default function AdminLayout() {
           transform: isSidebarOpen ? "translateX(0)" : "translateX(-100%)",
         }}
       >
-        {/* HEADER LOGO + CLOSE BUTTON */}
+        {/* HEADER LOGO */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <h4 style={{ margin: 0, fontSize: "1.2rem" }}>Broker Admin</h4>
 
-          {/* MOBILE CLOSE BTN */}
           <button
             onClick={() => setIsSidebarOpen(false)}
             style={{
@@ -634,9 +602,7 @@ export default function AdminLayout() {
               border: "none",
               color: "#fff",
               cursor: "pointer",
-              display: "block",
             }}
-            className="close-btn"
           >
             <X size={24} />
           </button>
@@ -649,64 +615,38 @@ export default function AdminLayout() {
             </Link>
           </li>
 
-<li style={styles.navItem}>
-            <Link
-              to="/admin/Descriptionmanager"
-              style={styles.link}
-              onClick={() => setIsSidebarOpen(false)}
-            >
-              <List size={18} style={styles.icon} /> Add Description 
+          <li style={styles.navItem}>
+            <Link to="/admin/Descriptionmanager" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
+              <List size={18} style={styles.icon} /> Add Description
             </Link>
           </li>
 
-
-
           <li style={styles.navItem}>
-            <Link
-              to="/admin/CategoryManager"
-              style={styles.link}
-              onClick={() => setIsSidebarOpen(false)}
-            >
+            <Link to="/admin/CategoryManager" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
               <List size={18} style={styles.icon} /> Add Category
             </Link>
           </li>
 
           <li style={styles.navItem}>
-            <Link
-              to="/admin/categorylist"
-              style={styles.link}
-              onClick={() => setIsSidebarOpen(false)}
-            >
+            <Link to="/admin/categorylist" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
               <List size={18} style={styles.icon} /> Category List
             </Link>
           </li>
 
           <li style={styles.navItem}>
-            <Link
-              to="/admin/priceanalytics"
-              style={styles.link}
-              onClick={() => setIsSidebarOpen(false)}
-            >
+            <Link to="/admin/priceanalytics" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
               <BarChart2 size={18} style={styles.icon} /> Analytics
             </Link>
           </li>
 
           <li style={styles.navItem}>
-            <Link
-              to="/admin/pricelist"
-              style={styles.link}
-              onClick={() => setIsSidebarOpen(false)}
-            >
+            <Link to="/admin/pricelist" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
               <DollarSign size={18} style={styles.icon} /> Add Product
             </Link>
           </li>
 
           <li style={styles.navItem}>
-            <Link
-              to="/admin/productlist"
-              style={styles.link}
-              onClick={() => setIsSidebarOpen(false)}
-            >
+            <Link to="/admin/productlist" style={styles.link} onClick={() => setIsSidebarOpen(false)}>
               <DollarSign size={18} style={styles.icon} /> Product List
             </Link>
           </li>
@@ -739,7 +679,8 @@ export default function AdminLayout() {
         style={{
           flex: 1,
           width: "100%",
-          marginLeft: 0,
+          marginLeft: isSidebarOpen ? 240 : 0,
+          transition: "margin-left 0.3s ease",
         }}
       >
         {/* TOP BAR */}
@@ -756,9 +697,8 @@ export default function AdminLayout() {
             zIndex: 50,
           }}
         >
-          {/* HAMBURGER BTN MOBILE */}
           <button
-            onClick={() => setIsSidebarOpen(true)}
+            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
             style={{
               background: "transparent",
               border: "none",
@@ -778,26 +718,6 @@ export default function AdminLayout() {
           <Outlet />
         </div>
       </main>
-
-      {/* CSS RESPONSIVE */}
-      <style>
-        {`
-          @media (min-width: 768px) {
-            aside {
-              transform: translateX(0) !important;
-              width: 240px !important;
-            }
-
-            .close-btn {
-              display: none !important;
-            }
-
-            main {
-              margin-left: 240px !important;
-            }
-          }
-        `}
-      </style>
     </div>
   );
 }
@@ -819,3 +739,4 @@ const styles = {
     minWidth: 20,
   },
 };
+
