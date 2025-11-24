@@ -380,15 +380,7 @@ export default function AdminLayout() {
             </Link>
           </li>
 
-          <li style={styles.navItem}>
-            <Link
-              to="/admin/historylist"
-              style={styles.link}
-              onClick={() => isMobile && setIsSidebarOpen(false)}
-            >
-              <Clock size={18} style={styles.icon} /> History
-            </Link>
-          </li>
+         
 
         </ul>
 
@@ -487,3 +479,4 @@ const styles = {
     minWidth: 20,
   },
 };
+
