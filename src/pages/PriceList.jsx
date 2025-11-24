@@ -4681,10 +4681,10 @@ const [quickBasePrices, setQuickBasePrices] = useState({});
 
                 <th style={styles.th}>Base</th>
                 <th style={styles.th}>YTD</th>
-                <th style={styles.th}>Today Diff</th>
+                <th style={styles.th}>PnL</th>
                 <th style={styles.th}>Current Final</th>
 
-                <th style={styles.th}>Quick Diff</th>
+                <th style={styles.th}>Quick PnL</th>
                 <th style={styles.th}>Status</th>
                 <th style={styles.th}>Valid Till</th>
                 <th style={styles.th}>Actions</th>
@@ -5201,3 +5201,4 @@ csvBtnPrimary: {
   modal: { background: "#fff", borderRadius: 12, padding: 20, maxWidth: 700, width: "100%", maxHeight: "90vh", overflowY: "auto" },
   modalTitle: { fontSize: 18, fontWeight: "700", color: "#0d3b66", marginBottom: 12, textAlign: "center" },
 };
+
