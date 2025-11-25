@@ -2009,36 +2009,80 @@ const enriched = raw.map((item) => {
     setQuickDiffs((p) => ({ ...p, [id]: value }));
   };
 
-  const applyQuickDiff = async (id) => {
-    const diff = Number(quickDiffs[id] ?? 0);
-    try {
-      setLoading(true);
-      // const res = await axios.put(`${API_URL}/updateDiff/${id}`, { diff });
-      // if (res.data && res.data.success) {
-      //   await fetchItems();
-      const res = await axios.put(`${API_URL}/updateDiff/${id}`, { diff });
+//   const applyQuickDiff = async (id) => {
+//     const diff = Number(quickDiffs[id] ?? 0);
+//     try {
+//       setLoading(true);
+//       // const res = await axios.put(`${API_URL}/updateDiff/${id}`, { diff });
+//       // if (res.data && res.data.success) {
+//       //   await fetchItems();
+//       const res = await axios.put(`${API_URL}/updateDiff/${id}`, { diff });
 
-if (res.data.success) {
-  const updated = res.data.data;
+// if (res.data.success) {
+//   const updated = res.data.data;
 
-  setItems((prev) =>
-    prev.map((x) => (x._id === id ? updated : x))
-  );
+//   setItems((prev) =>
+//     prev.map((x) => (x._id === id ? updated : x))
+//   );
 
 
-        setQuickDiffs((p) => ({ ...p, [id]: undefined }));
-      } else {
-        alert("Diff update failed");
-      }
-    } catch (err) {
-      console.error("update-diff error", err);
-      alert("Diff update failed");
-    } finally {
-      setLoading(false);
-    }
-  };
+//         setQuickDiffs((p) => ({ ...p, [id]: undefined }));
+//       } else {
+//         alert("Diff update failed");
+//       }
+//     } catch (err) {
+//       console.error("update-diff error", err);
+//       alert("Diff update failed");
+//     } finally {
+//       setLoading(false);
+//     }
+//   };
+
 
   // ------------------ ROUTINE UI ------------------
+  const applyQuickDiff = async (id) => {
+  const diff = Number(quickDiffs[id] ?? 0);
+
+  try {
+    setLoading(true);
+
+    const res = await axios.put(`${API_URL}/updateDiff/${id}`, { diff });
+
+    if (res.data.success) {
+      const updated = res.data.data;
+
+      // 🟢 CLEAN SAFE FORMAT (to avoid crash)
+      const cleanItem = {
+        ...updated,
+        todayDiff: Number(updated.todayDiff ?? 0),
+        lastFinalPrice: Number(updated.lastFinalPrice ?? 0),
+        currentFinalPrice: Number(updated.currentFinalPrice ?? 0),
+
+        category: updated.category
+          ? { _id: updated.category._id, name: updated.category.name }
+          : null,
+
+        subcategory: updated.subcategory
+          ? { name: updated.subcategory.name }
+          : null,
+      };
+
+      setItems((prev) =>
+        prev.map((x) => (x._id === id ? cleanItem : x))
+      );
+
+      setQuickDiffs((p) => ({ ...p, [id]: "" }));
+    } else {
+      alert("Diff update failed");
+    }
+  } catch (err) {
+    console.error("update-diff error", err.response?.data || err);
+    alert("Diff update failed");
+  } finally {
+    setLoading(false);
+  }
+};
+
   return (
     <div style={styles.container}>
       <div style={styles.header}>
@@ -2500,10 +2544,30 @@ if (res.data.success) {
   //       : x
   //   )
   // );
+// const updated = res.data.data;
+
+// setItems((prev) =>
+//   prev.map((x) => (x._id === item._id ? updated : x))
+// );
 const updated = res.data.data;
 
+const cleanItem = {
+  ...updated,
+  todayDiff: Number(updated.todayDiff ?? 0),
+  lastFinalPrice: Number(updated.lastFinalPrice ?? 0),
+  currentFinalPrice: Number(updated.currentFinalPrice ?? 0),
+
+  category: updated.category
+    ? { _id: updated.category._id, name: updated.category.name }
+    : null,
+
+  subcategory: updated.subcategory
+    ? { name: updated.subcategory.name }
+    : null,
+};
+
 setItems((prev) =>
-  prev.map((x) => (x._id === item._id ? updated : x))
+  prev.map((x) => (x._id === item._id ? cleanItem : x))
 );
 
   setQuickBasePrices((p) => ({
@@ -2932,3 +2996,4 @@ csvBtnPrimary: {
   modal: { background: "#fff", borderRadius: 12, padding: 20, maxWidth: 700, width: "100%", maxHeight: "90vh", overflowY: "auto" },
   modalTitle: { fontSize: 18, fontWeight: "700", color: "#0d3b66", marginBottom: 12, textAlign: "center" },
 };
+
